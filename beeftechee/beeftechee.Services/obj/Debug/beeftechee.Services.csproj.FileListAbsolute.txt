@@ -1,0 +1,16 @@
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Services.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Services.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Debug\beeftechee.Services.csprojAssemblyReference.cache
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Debug\beeftechee.Services.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Debug\beeftechee.Services.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Services.dll.config
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Database.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Entities.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\EntityFramework.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Database.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Database.dll.config
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\beeftechee.Entities.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\EntityFramework.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Debug\beeftechee.Services.csproj.CopyComplete
