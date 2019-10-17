@@ -22,14 +22,5 @@ namespace beeftechee.Services
         }
 
 
-        public static List<Drink> GetDrinks()
-        {
-            using (BeeftecheeDb context = new BeeftecheeDb())
-            {
-                var model = from x in context.Drinks
-                            select x;
-                return model.ToList();
-            }
-        }
     }
 }

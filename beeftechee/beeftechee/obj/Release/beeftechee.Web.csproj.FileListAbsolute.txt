@@ -111,3 +111,13 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeft
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.Web.csproj.CopyComplete
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Database.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Entities.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Services.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Database.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Database.dll.config
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Entities.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Services.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Services.dll.config
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.Migrations.TrialPropertyUser.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.Migrations.ChangeUserModel.resources

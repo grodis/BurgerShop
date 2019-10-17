@@ -22,12 +22,12 @@ namespace beeftechee.Controllers
 
 
 
-        public ActionResult Menu()
+        public async Task<ActionResult> Menu()
         {
             var model = new BurgerDrinkViewModel
             {
-                Burgers = BurgerServices.GetBurgers(),
-                Drinks = DrinkServices.GetDrinks()
+                Burgers = await BurgerServices.GetBurgersAsync(),
+                Drinks = await DrinkServices.GetDrinksAsync()
             };
 
             return  View(model);

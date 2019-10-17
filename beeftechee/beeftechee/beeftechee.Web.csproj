@@ -181,8 +181,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BreadController.cs" />
+    <Compile Include="Controllers\BurgerController.cs" />
+    <Compile Include="Controllers\CheeseController.cs" />
+    <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MeatController.cs" />
+    <Compile Include="Controllers\SauceController.cs" />
+    <Compile Include="Controllers\VeggieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,6 +275,41 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Burger\Create.cshtml" />
+    <Content Include="Views\Burger\Delete.cshtml" />
+    <Content Include="Views\Burger\Details.cshtml" />
+    <Content Include="Views\Burger\Edit.cshtml" />
+    <Content Include="Views\Burger\Index.cshtml" />
+    <Content Include="Views\Bread\Create.cshtml" />
+    <Content Include="Views\Bread\Delete.cshtml" />
+    <Content Include="Views\Bread\Details.cshtml" />
+    <Content Include="Views\Bread\Edit.cshtml" />
+    <Content Include="Views\Bread\Index.cshtml" />
+    <Content Include="Views\Cheese\Create.cshtml" />
+    <Content Include="Views\Cheese\Delete.cshtml" />
+    <Content Include="Views\Cheese\Details.cshtml" />
+    <Content Include="Views\Cheese\Edit.cshtml" />
+    <Content Include="Views\Cheese\Index.cshtml" />
+    <Content Include="Views\Meat\Create.cshtml" />
+    <Content Include="Views\Meat\Delete.cshtml" />
+    <Content Include="Views\Meat\Details.cshtml" />
+    <Content Include="Views\Meat\Edit.cshtml" />
+    <Content Include="Views\Meat\Index.cshtml" />
+    <Content Include="Views\Sauce\Create.cshtml" />
+    <Content Include="Views\Sauce\Delete.cshtml" />
+    <Content Include="Views\Sauce\Details.cshtml" />
+    <Content Include="Views\Sauce\Edit.cshtml" />
+    <Content Include="Views\Sauce\Index.cshtml" />
+    <Content Include="Views\Drink\Create.cshtml" />
+    <Content Include="Views\Drink\Delete.cshtml" />
+    <Content Include="Views\Drink\Details.cshtml" />
+    <Content Include="Views\Drink\Edit.cshtml" />
+    <Content Include="Views\Drink\Index.cshtml" />
+    <Content Include="Views\Veggie\Create.cshtml" />
+    <Content Include="Views\Veggie\Delete.cshtml" />
+    <Content Include="Views\Veggie\Details.cshtml" />
+    <Content Include="Views\Veggie\Edit.cshtml" />
+    <Content Include="Views\Veggie\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

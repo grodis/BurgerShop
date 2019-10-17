@@ -1,0 +1,51 @@
+﻿@model beeftechee.ViewModels.BurgerDrinkViewModel
+
+@{
+    ViewBag.Title = "Menu";
+}
+
+<h2>Menu</h2>
+
+<table class="table" id="burgerTable">
+    <tr>
+        <th>Burger Name</th>
+    </tr>
+
+    @foreach (var burger in Model.Burgers)
+    {
+        <tr>
+            <td>
+                @burger.Name
+            </td>
+            <td>
+                @Html.ActionLink("Add to cart", "Cart" , null, htmlAttributes: new { @class = "btn btn-success"})
+            </td>
+        </tr>
+    }
+    <tr>
+        <td>
+            <div class="btn btn-info">
+                Ftiakse to diko sou burger
+            </div>
+        </td>
+    </tr>
+</table>
+<table class="table" id="drinkTable">
+    <tr>
+        <th>Drink Name</th>
+    </tr>
+
+    @foreach (var drink in Model.Drinks)
+    {
+        <tr>
+            <td>
+                @drink.Name
+            </td>
+            <td>
+                Add to cart
+            </td>
+        </tr>
+    }
+
+</table>
+

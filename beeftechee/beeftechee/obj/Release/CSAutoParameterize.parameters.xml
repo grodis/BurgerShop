@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="beeftechee-Web.config Connection String" description="beeftechee Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:beeftecheedbserver.database.windows.net,1433;Initial Catalog=beeftechee_dbShop;Persist Security Info=False;User Id=grodis@beeftecheedbserver;Password=123456gG;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30" tags="SqlConnectionString">
+  <parameter name="beeftechee-Web.config Connection String" description="beeftechee Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:beeftecheedbserver.database.windows.net,1433;Initial Catalog=beeftecheeShop;Persist Security Info=False;User Id=grodis@beeftecheedbserver;Password=123456gG;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Konstantinos\\Desktop\\beeftechee\\beeftechee\\beeftechee\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='beeftechee']/@connectionString" />
   </parameter>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:beeftecheedbserver.database.windows.net,1433;Initial Catalog=beeftechee_db_AuthUsers;Persist Security Info=False;User Id=grodis@beeftecheedbserver;Password=123456gG;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Konstantinos\\Desktop\\beeftechee\\beeftechee\\beeftechee\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="DefaultConnection_DatabasePublish-Web.config Connection String" description="DefaultConnection_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_DatabasePublish.ConnetionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Konstantinos\\Desktop\\beeftechee\\beeftechee\\beeftechee\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection_DatabasePublish']/@connectionString" />
   </parameter>
 </parameters>

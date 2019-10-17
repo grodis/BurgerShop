@@ -1,0 +1,74 @@
+﻿@model IEnumerable<beeftechee.Entities.Burger>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table text-center">
+    <tr>
+        <th class="text-center">
+            Burger's name
+        </th>
+        <th class="text-center">
+            Bread type
+        </th>
+        <th class="text-center">
+            Cheese type
+        </th>
+        <th class="text-center">
+            Meat type
+        </th>
+        <th class="text-center">
+            Sauce type
+        </th>
+        <th class="text-center">
+            Veggetable type
+        </th>
+
+        <th class="text-center">
+            Total price
+        </th>
+        <th class="text-center">
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bread.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cheese.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Meat.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sauce.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Veggie.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

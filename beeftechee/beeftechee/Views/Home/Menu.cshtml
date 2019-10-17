@@ -17,9 +17,18 @@
             <td>
                 @burger.Name
             </td>
+            <td>
+                @Html.ActionLink("Add to cart", "Cart" , null, htmlAttributes: new { @class = "btn btn-success"})
+            </td>
         </tr>
     }
-
+    <tr>
+        <td>
+            <div class="btn btn-info">
+                Ftiakse to diko sou burger
+            </div>
+        </td>
+    </tr>
 </table>
 <table class="table" id="drinkTable">
     <tr>
@@ -31,6 +40,9 @@
         <tr>
             <td>
                 @drink.Name
+            </td>
+            <td>
+                Add to cart
             </td>
         </tr>
     }

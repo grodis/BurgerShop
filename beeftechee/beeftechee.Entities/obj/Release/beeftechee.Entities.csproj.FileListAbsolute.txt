@@ -1,0 +1,5 @@
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\bin\Release\beeftechee.Entities.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\bin\Release\beeftechee.Entities.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\obj\Release\beeftechee.Entities.csprojAssemblyReference.cache
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\obj\Release\beeftechee.Entities.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\obj\Release\beeftechee.Entities.pdb
