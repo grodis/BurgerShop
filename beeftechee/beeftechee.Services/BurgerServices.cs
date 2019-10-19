@@ -16,10 +16,38 @@ namespace beeftechee.Services
         {
             using (BeeftecheeDb context = new BeeftecheeDb())
             {
-                var model = from x in context.Burgers
-                            select x;
+                var model = context.Burgers.Include(b => b.Bread).Include(b => b.Cheese).Include(b => b.Meat).Include(b => b.Sauce).Include(b => b.Veggie);
                 return await model.ToListAsync();
             }
+
+        }
+
+
+
+        public static async Task<Burger> FindBurgerAsync(int? id)
+        {
+            using (BeeftecheeDb context = new BeeftecheeDb())
+            {
+                var model = context.Burgers.Include(b => b.Bread).Include(b => b.Cheese).Include(b => b.Meat).Include(b => b.Sauce).Include(b => b.Veggie).SingleOrDefaultAsync(x => x.Id == id);
+                return await model;
+            }
+
+        }
+
+
+
+        public static List<Burger> GetBurgers()
+        {
+            using (BeeftecheeDb context = new BeeftecheeDb())
+            {
+                return context.Burgers.Include(b => b.Bread).Include(b => b.Cheese).Include(b => b.Meat).Include(b => b.Sauce).Include(b => b.Veggie).ToList();
+            }
+        }
+
+
+        public static Burger GetBurger()
+        {
+            return new Burger();
         }
 
 

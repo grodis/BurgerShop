@@ -14,12 +14,19 @@ namespace beeftechee
     {
         protected void Application_Start()
         {
-            
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+
+            Session["count"] = 0;
+            Session["maxInt"] = CommonTools.GetBurgerMaxId();
         }
     }
 }

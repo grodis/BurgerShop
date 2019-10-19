@@ -1,4 +1,5 @@
-﻿using beeftechee.Services;
+﻿using beeftechee.Database;
+using beeftechee.Services;
 using beeftechee.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace beeftechee.Controllers
 {
     public class HomeController : Controller
     {
+        private BeeftecheeDb db = new BeeftecheeDb();
         public ActionResult Index()
         {
             return View();
@@ -24,6 +26,14 @@ namespace beeftechee.Controllers
 
         public async Task<ActionResult> Menu()
         {
+
+            ViewBag.BreadId = new SelectList(db.Breads, "Id", "Name");
+            ViewBag.CheeseId = new SelectList(db.Cheeses, "Id", "Name");
+            ViewBag.MeatId = new SelectList(db.Meats, "Id", "Name");
+            ViewBag.SauceId = new SelectList(db.Sauces, "Id", "Name");
+            ViewBag.VeggieId = new SelectList(db.Veggies, "Id", "Name");
+
+
             var model = new BurgerDrinkViewModel
             {
                 Burgers = await BurgerServices.GetBurgersAsync(),
@@ -34,11 +44,6 @@ namespace beeftechee.Controllers
 
 
         }
-
-
-
-
-
 
 
 
@@ -59,5 +64,7 @@ namespace beeftechee.Controllers
 
             return View();
         }
+
+
     }
 }

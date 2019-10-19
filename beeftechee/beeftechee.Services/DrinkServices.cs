@@ -21,6 +21,16 @@ namespace beeftechee.Services
             }
         }
 
+        public static async Task<Drink> FindDrinkAsync(int? id)
+        {
+            using (BeeftecheeDb context = new BeeftecheeDb())
+            {
+                var model = context.Drinks.FindAsync(id);
+                return await model;
+            }
+
+        }
+
 
     }
 }

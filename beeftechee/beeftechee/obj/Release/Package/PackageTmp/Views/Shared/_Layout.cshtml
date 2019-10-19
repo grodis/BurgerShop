@@ -23,13 +23,16 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/Home/Menu#burgerTable">Burger</a></li>
                     <li><a href="/Home/Menu#drinkTable">Drink</a></li>
-                    <li>@Html.ActionLink("Cart (2)", "Cart", "Home")</li>
-                    <li>@Html.ActionLink("Burger", "Index", "Burger")</li>
+                    <li>@Html.ActionLink("BurgerList", "Index", "Burger")</li>
+                    <li>@Html.ActionLink("DrinkList", "Index", "Drink")</li>
                     <li>@Html.ActionLink("Bread", "Index", "Bread")</li>
                     <li>@Html.ActionLink("Meat", "Index", "Meat")</li>
                     <li>@Html.ActionLink("Cheese", "Index", "Cheese")</li>
                     <li>@Html.ActionLink("Sauce", "Index", "Sauce")</li>
                     <li>@Html.ActionLink("Veggetable", "Index", "Veggie")</li>
+                    <li>
+                        <a href="@Url.Action("Index", "Cart")">Cart<span class="badge">@Session["count"]</span></a>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -46,5 +49,31 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) ||
+            !isNaN(Globalize.parseFloat(value));
+    }
+    $(document).ready(function () {
+        Globalize.culture('@(System.Threading.Thread.CurrentThread.CurrentCulture.Name)');
+    });
+    </script>
+    <script>
+        jQuery.extend(jQuery.validator.methods, {
+            range: function (value, element, param) {
+                //Use the Globalization plugin to parse the value
+                var val = Globalize.parseFloat(value);
+                return this.optional(element) || (
+                    val >= param[0] && val <= param[1]);
+            }
+        });
+        $.validator.methods.date = function (value, element) {
+            return this.optional(element) ||
+                Globalize.parseDate(value) ||
+                Globalize.parseDate(value, "yyyy-MM-dd");
+        }
+    </script>
+
 </body>
 </html>

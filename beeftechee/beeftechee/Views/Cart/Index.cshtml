@@ -1,0 +1,123 @@
+﻿@model beeftechee.Models.CartModels.Cart
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--BURGER TABLE IN CART-->
+<table class="table" id="tableBurgerCart">
+    <thead>
+        <tr>
+            <th>Burger</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Ingredients</th>
+            <th>Sub Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cartBurger in Model.CartBurgers)
+        {
+            <tr>
+                <td>@cartBurger.Name</td>
+                <td>€@cartBurger.Price</td>
+                <td>@cartBurger.Quantity</td>
+
+                <td>
+                    <small>@cartBurger.BreadName</small>,
+                    <small>@cartBurger.MeatName</small>,
+                    <small>@cartBurger.CheeseName</small>,
+                    <small>@cartBurger.SauceName</small>,
+                    <small>@cartBurger.VeggieName</small>
+                </td>
+                <td>€@(cartBurger.Price * cartBurger.Quantity)</td>
+                <td>
+                    @using (Html.BeginForm("DeleteBurger", "Cart", FormMethod.Post))
+                    {
+                        @Html.Hidden("BurgerId", cartBurger.BurgerId)
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    }
+                </td>
+            </tr>
+        }
+        @if (!Model.CartBurgers.Any())
+        {
+            <tr>
+                <td colspan="5">No items in shopping cart</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+<!--DRINK TABLE IN CART-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Drink</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cartDrink in Model.CartDrinks)
+        {
+            <tr>
+                <td>@cartDrink.Name</td>
+                <td>€@cartDrink.Price</td>
+                <td>@cartDrink.Quantity</td>
+
+                <td>€@(cartDrink.Price * cartDrink.Quantity)</td>
+                <td>
+                    @using (Html.BeginForm("DeleteDrink", "Cart", FormMethod.Post))
+                    {
+                        @Html.Hidden("DrinkId", cartDrink.DrinkId)
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    }
+                </td>
+            </tr>
+        }
+        @if (!Model.CartDrinks.Any())
+        {
+            <tr>
+                <td colspan="5">No items in shopping cart</td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3"><strong>Total</strong></td>
+            <td></td>
+            <td><strong>€@(Model.CartBurgers.Sum(x => x.Price * x.Quantity) + Model.CartDrinks.Sum(x => x.Price * x.Quantity))</strong></td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>

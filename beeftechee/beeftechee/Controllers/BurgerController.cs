@@ -9,12 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using beeftechee.Database;
 using beeftechee.Entities;
+using beeftechee.Services;
 
 namespace beeftechee.Controllers
 {
     public class BurgerController : Controller
     {
-        private BeeftecheeDb db = new BeeftecheeDb();
+        private readonly BeeftecheeDb db = new BeeftecheeDb();
 
         // GET: Burger
         public async Task<ActionResult> Index()
@@ -30,7 +31,7 @@ namespace beeftechee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Burger burger = await db.Burgers.FindAsync(id);
+            Burger burger = await BurgerServices.FindBurgerAsync(id);
             if (burger == null)
             {
                 return HttpNotFound();
@@ -58,10 +59,12 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
-                var totalPrice = 0.0M;
                 burger.Meat = db.Meats.Find(burger.MeatId);
                 burger.Bread = db.Breads.Find(burger.BreadId);
-                totalPrice = burger.Bread.Price + burger.Meat.Price;
+                burger.Sauce = db.Sauces.Find(burger.SauceId);
+                burger.Veggie = db.Veggies.Find(burger.VeggieId);
+                burger.Cheese = db.Cheeses.Find(burger.CheeseId);
+                decimal totalPrice = burger.Bread.Price + burger.Meat.Price;
                 totalPrice += db.Sauces.Find(burger.SauceId) == null ? 0 : db.Sauces.Find(burger.SauceId).Price;
                 totalPrice += db.Cheeses.Find(burger.CheeseId) == null ? 0 : db.Cheeses.Find(burger.CheeseId).Price;
                 totalPrice += db.Veggies.Find(burger.VeggieId) == null ? 0 : db.Veggies.Find(burger.VeggieId).Price;
@@ -130,7 +133,7 @@ namespace beeftechee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Burger burger = await db.Burgers.FindAsync(id);
+            Burger burger = await BurgerServices.FindBurgerAsync(id);
             if (burger == null)
             {
                 return HttpNotFound();

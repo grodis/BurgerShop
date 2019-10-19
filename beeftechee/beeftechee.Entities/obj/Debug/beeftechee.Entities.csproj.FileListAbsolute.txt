@@ -2,3 +2,4 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\bin\Debu
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\bin\Debug\beeftechee.Entities.pdb
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\obj\Debug\beeftechee.Entities.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\obj\Debug\beeftechee.Entities.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Entities\obj\Debug\beeftechee.Entities.csprojAssemblyReference.cache

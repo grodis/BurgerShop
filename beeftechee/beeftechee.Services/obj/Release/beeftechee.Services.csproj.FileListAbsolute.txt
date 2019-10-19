@@ -14,3 +14,16 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Rele
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Release\beeftechee.Services.csproj.CopyComplete
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Release\beeftechee.Services.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\obj\Release\beeftechee.Services.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.Helpers.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.Mvc.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.Razor.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.WebPages.Deployment.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.WebPages.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.WebPages.Razor.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.Helpers.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.Mvc.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.Razor.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.WebPages.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.WebPages.Deployment.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Services\bin\Release\System.Web.WebPages.Razor.xml
