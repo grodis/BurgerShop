@@ -12,7 +12,7 @@ namespace beeftechee.Services
     {
         
 
-        //Epistrefei to max id twn burgers 
+        //Returns the max id of the burger database 
         public static int GetBurgerMaxId()
         {
             using(BeeftecheeDb context = new BeeftecheeDb())

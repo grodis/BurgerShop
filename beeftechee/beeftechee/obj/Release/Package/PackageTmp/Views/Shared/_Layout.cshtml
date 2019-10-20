@@ -31,7 +31,7 @@
                     <li>@Html.ActionLink("Sauce", "Index", "Sauce")</li>
                     <li>@Html.ActionLink("Veggetable", "Index", "Veggie")</li>
                     <li>
-                        <a href="@Url.Action("Index", "Cart")">Cart<span class="badge">@Session["count"]</span></a>
+                        <a href="@Url.Action("Index", "Cart")">Cart <span class="badge">@Session["count"]</span></a>
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")

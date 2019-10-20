@@ -121,3 +121,6 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Se
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Services.dll.config
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.Migrations.TrialPropertyUser.resources
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.Migrations.ChangeUserModel.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Release\beeftechee.Migrations.ChangedOrderModel.resources

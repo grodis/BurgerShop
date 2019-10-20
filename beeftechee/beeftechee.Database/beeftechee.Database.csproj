@@ -53,6 +53,22 @@
     <Compile Include="Migrations\201910151414127_InitialCreate.Designer.cs">
       <DependentUpon>201910151414127_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910201102016_ChangedOrderModel.cs" />
+    <Compile Include="Migrations\201910201102016_ChangedOrderModel.Designer.cs">
+      <DependentUpon>201910201102016_ChangedOrderModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201111370_changeOrderPostalCodeToInt.cs" />
+    <Compile Include="Migrations\201910201111370_changeOrderPostalCodeToInt.Designer.cs">
+      <DependentUpon>201910201111370_changeOrderPostalCodeToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201133231_AddedOrderDrinkAndOrderBurger.cs" />
+    <Compile Include="Migrations\201910201133231_AddedOrderDrinkAndOrderBurger.Designer.cs">
+      <DependentUpon>201910201133231_AddedOrderDrinkAndOrderBurger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201339204_changedPricToDecima.cs" />
+    <Compile Include="Migrations\201910201339204_changedPricToDecima.Designer.cs">
+      <DependentUpon>201910201339204_changedPricToDecima.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +85,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910151414127_InitialCreate.resx">
       <DependentUpon>201910151414127_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201102016_ChangedOrderModel.resx">
+      <DependentUpon>201910201102016_ChangedOrderModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201111370_changeOrderPostalCodeToInt.resx">
+      <DependentUpon>201910201111370_changeOrderPostalCodeToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201133231_AddedOrderDrinkAndOrderBurger.resx">
+      <DependentUpon>201910201133231_AddedOrderDrinkAndOrderBurger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201339204_changedPricToDecima.resx">
+      <DependentUpon>201910201339204_changedPricToDecima.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -70,15 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BreadServices.cs" />
     <Compile Include="BurgerServices.cs" />
-    <Compile Include="CheeseServices.cs" />
     <Compile Include="CommonTools.cs" />
     <Compile Include="DrinkServices.cs" />
-    <Compile Include="MeatServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaucesServices.cs" />
-    <Compile Include="VeggieServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\beeftechee.Database\beeftechee.Database.csproj">

@@ -11,7 +11,7 @@ namespace beeftechee.Services
 {
     public class BurgerServices
     {
-
+        //Returns asynchronously all burgers including all the ingredients from the database
         public static async Task<List<Burger>> GetBurgersAsync()
         {
             using (BeeftecheeDb context = new BeeftecheeDb())
@@ -23,7 +23,7 @@ namespace beeftechee.Services
         }
 
 
-
+        //Returns asynchronously a burger with a specific ID
         public static async Task<Burger> FindBurgerAsync(int? id)
         {
             using (BeeftecheeDb context = new BeeftecheeDb())
@@ -34,23 +34,10 @@ namespace beeftechee.Services
 
         }
 
-
-
-        public static List<Burger> GetBurgers()
-        {
-            using (BeeftecheeDb context = new BeeftecheeDb())
-            {
-                return context.Burgers.Include(b => b.Bread).Include(b => b.Cheese).Include(b => b.Meat).Include(b => b.Sauce).Include(b => b.Veggie).ToList();
-            }
-        }
-
-
         public static Burger GetBurger()
         {
             return new Burger();
         }
-
-
 
     }
 }

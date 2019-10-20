@@ -51,6 +51,8 @@
     <Compile Include="Ingredient Entities\Sauce.cs" />
     <Compile Include="Ingredient Entities\Veggie.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderBurger.cs" />
+    <Compile Include="OrderDrink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

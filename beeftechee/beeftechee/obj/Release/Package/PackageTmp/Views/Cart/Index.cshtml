@@ -116,8 +116,12 @@
         <tr>
             <td colspan="3"><strong>Total</strong></td>
             <td></td>
-            <td><strong>€@(Model.CartBurgers.Sum(x => x.Price * x.Quantity) + Model.CartDrinks.Sum(x => x.Price * x.Quantity))</strong></td>
+            <td><strong>€@(Model.GetTotalPrice())</strong></td>
             <td></td>
         </tr>
     </tfoot>
 </table>
+
+@Html.ActionLink("Complete Payment", "Checkout", "Cart",null, htmlAttributes: new { @class = "btn btn-info" })
+
+

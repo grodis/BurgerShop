@@ -13,3 +13,7 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Rele
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Release\beeftechee.Database.csproj.CopyComplete
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Release\beeftechee.Database.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Release\beeftechee.Database.pdb
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Release\beeftechee.Database.Migrations.ChangedOrderModel.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Release\beeftechee.Database.Migrations.changeOrderPostalCodeToInt.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Release\beeftechee.Database.Migrations.AddedOrderDrinkAndOrderBurger.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Release\beeftechee.Database.Migrations.changedPricToDecima.resources

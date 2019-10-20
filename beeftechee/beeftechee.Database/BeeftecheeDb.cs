@@ -15,7 +15,11 @@ namespace beeftechee.Database
         {
 
         }
+
+        //Burger shop entities database
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderBurger> OrderBurgers { get; set; }
+        public DbSet<OrderDrink> OrderDrinks{ get; set; }
         public DbSet<Burger> Burgers { get; set; }
         public DbSet<Drink> Drinks{ get; set; }
         public DbSet<Bread> Breads { get; set; }

@@ -20,8 +20,7 @@ namespace beeftechee.Controllers
         // GET: Burger
         public async Task<ActionResult> Index()
         {
-            var burgers = db.Burgers.Include(b => b.Bread).Include(b => b.Cheese).Include(b => b.Meat).Include(b => b.Sauce).Include(b => b.Veggie);
-            return View(await burgers.ToListAsync());
+            return View(await BurgerServices.GetBurgersAsync());
         }
 
         // GET: Burger/Details/5
@@ -59,19 +58,21 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Find and place the objects into the burger by their id
                 burger.Meat = db.Meats.Find(burger.MeatId);
                 burger.Bread = db.Breads.Find(burger.BreadId);
                 burger.Sauce = db.Sauces.Find(burger.SauceId);
                 burger.Veggie = db.Veggies.Find(burger.VeggieId);
                 burger.Cheese = db.Cheeses.Find(burger.CheeseId);
+
+                //Calculate the Total Price of the burger
                 decimal totalPrice = burger.Bread.Price + burger.Meat.Price;
                 totalPrice += db.Sauces.Find(burger.SauceId) == null ? 0 : db.Sauces.Find(burger.SauceId).Price;
                 totalPrice += db.Cheeses.Find(burger.CheeseId) == null ? 0 : db.Cheeses.Find(burger.CheeseId).Price;
                 totalPrice += db.Veggies.Find(burger.VeggieId) == null ? 0 : db.Veggies.Find(burger.VeggieId).Price;
-
-
-
                 burger.Price = totalPrice;
+
+                //Save the Burger into the database
                 db.Burgers.Add(burger);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

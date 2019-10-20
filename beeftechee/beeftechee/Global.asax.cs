@@ -22,6 +22,8 @@ namespace beeftechee
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+
+        //When the Session is created initialize the following Session data
         void Session_Start(object sender, EventArgs e)
         {
 

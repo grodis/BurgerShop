@@ -1,0 +1,68 @@
+﻿@model beeftechee.Entities.Order
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+
+<h2>Thank you for your order!</h2>
+<h4>Details of Order</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Order Id
+        </th>
+        <th>
+            User Name
+        </th>
+        <th>
+            Date of Order
+        </th>
+        <th>
+            Total Price
+        </th>
+        <th>
+            Burgers
+        </th>
+        <th>
+            Drinks
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Model.Id
+        </td>
+        <td>
+            @Model.UserName
+        </td>
+        <td>
+            @Model.OrderDate
+        </td>
+        <td>
+            @Model.TotalPrice
+        </td>
+        <td>
+            @foreach (var burger in Model.OrderBurgers)
+            {
+                <span>@burger.Name </span> 
+                <span>@burger.Price </span> 
+                <span>@burger.Quantity </span> 
+                <span>@burger.BreadName </span> 
+                <span>@burger.MeatName </span> 
+                <span>@burger.SauceName </span> 
+                <span>@burger.VeggieName </span> 
+                <span>@burger.CheeseName </span> 
+            }
+        </td>
+        <td>
+            @foreach (var drink in Model.OrderDrinks)
+            {
+                <span>@drink.Name </span>
+                <span>@drink.Price </span>
+                <span>@drink.Quantity </span>
+                <span>@drink.Litre </span>
+            }
+        </td>
+    </tr>
+</table>

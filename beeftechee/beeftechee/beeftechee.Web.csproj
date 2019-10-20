@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -177,6 +180,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\PayPalConfiguration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -210,12 +214,17 @@
     <Compile Include="Migrations\201910161146498_ChangeUserModel.Designer.cs">
       <DependentUpon>201910161146498_ChangeUserModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910201059459_ChangedOrderModel.cs" />
+    <Compile Include="Migrations\201910201059459_ChangedOrderModel.Designer.cs">
+      <DependentUpon>201910201059459_ChangedOrderModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartModels\Cart.cs" />
     <Compile Include="Models\CartModels\CartBurger.cs" />
     <Compile Include="Models\CartModels\CartCustomBurger.cs" />
     <Compile Include="Models\CartModels\CartDrink.cs" />
+    <Compile Include="Models\CommonPayPal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -332,6 +341,7 @@
     <Content Include="Views\Veggie\Index.cshtml" />
     <Content Include="Views\Home\_MakeYourOwnBurger.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\SuccessView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -362,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910161146498_ChangeUserModel.resx">
       <DependentUpon>201910161146498_ChangeUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201059459_ChangedOrderModel.resx">
+      <DependentUpon>201910201059459_ChangedOrderModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

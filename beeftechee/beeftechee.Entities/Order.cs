@@ -11,10 +11,18 @@ namespace beeftechee.Entities
 
 
         public int Id { get; set; }
-        public List<Burger> Burgers { get; set; } = new List<Burger>();
-        public List<Drink> Drinks { get; set; } = new List<Drink>();
         public decimal TotalPrice { get; set; }
 
+        public DateTime OrderDate { get; set; }
+
+        public string UserName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public int PostalCode { get; set; }
+        public string ContactPhone { get; set; }
+
+        public List<OrderBurger> OrderBurgers { get; set; } = new List<OrderBurger>();
+        public List<OrderDrink> OrderDrinks { get; set; } = new List<OrderDrink>();
 
 
     }
