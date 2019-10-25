@@ -248,9 +248,9 @@ namespace beeftechee.Controllers
         {
             var cart = CreateOrGetCart();
             Entities.Order order = new Entities.Order();
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+            ApplicationUser user = await System.Web.HttpContext.Current.GetOwinContext()
                                                                  .GetUserManager<ApplicationUserManager>()
-                                                                 .FindById(User.Identity.GetUserId());
+                                                                 .FindByIdAsync(User.Identity.GetUserId());
             order.UserName = user.UserName;
             order.Address = user.Address;
             order.PostalCode = user.PostalCode;
@@ -258,6 +258,7 @@ namespace beeftechee.Controllers
             order.ContactPhone = user.PhoneNumber;
             order.OrderDate = DateTime.Now;
             order.TotalPrice = cart.GetTotalPrice();
+            Debug.WriteLine(order.TotalPrice);
             var stringArrayPrice = order.TotalPrice.ToString("#.##").Split(',');
             var StringPriceWithDot = String.Join(".", stringArrayPrice);
 
@@ -318,7 +319,7 @@ namespace beeftechee.Controllers
                             item_list = itemList,
                             payee = new Payee
                             {
-                                email = "grodis@example.com"
+                                email = "Burger Shop"
                             }
                         });
 

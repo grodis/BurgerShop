@@ -17,7 +17,9 @@ namespace beeftechee.Services
         {
             using(BeeftecheeDb context = new BeeftecheeDb())
             {
-                return context.Burgers.Max(y => y.Id);
+                if(context.Burgers.Any())
+                    return context.Burgers.Max(y => y.Id);
+                return 1;
             }
             
         }

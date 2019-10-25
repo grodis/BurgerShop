@@ -222,7 +222,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartModels\Cart.cs" />
     <Compile Include="Models\CartModels\CartBurger.cs" />
-    <Compile Include="Models\CartModels\CartCustomBurger.cs" />
     <Compile Include="Models\CartModels\CartDrink.cs" />
     <Compile Include="Models\CommonPayPal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -230,6 +229,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BurgerDrinkViewModel.cs" />
+    <Compile Include="ViewModels\EditPersonalInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -342,6 +342,7 @@
     <Content Include="Views\Home\_MakeYourOwnBurger.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\SuccessView.cshtml" />
+    <Content Include="Views\Manage\EditPersonalInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

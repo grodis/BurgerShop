@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using beeftechee.Models;
+using beeftechee.ViewModels;
 
 namespace beeftechee.Controllers
 {
@@ -321,6 +322,61 @@ namespace beeftechee.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
+
+        
+
+
+        //GET: /Manage/EditPersonalInfo
+        public async Task<ActionResult> EditPersonalInfo()
+        {
+            ApplicationUser user = await System.Web.HttpContext.Current.GetOwinContext()
+                                                                 .GetUserManager<ApplicationUserManager>()
+                                                                 .FindByIdAsync(User.Identity.GetUserId());
+            EditPersonalInfoViewModel model = new EditPersonalInfoViewModel
+            {
+                City = user.City,
+                Address = user.Address,
+                PostalCode = user.PostalCode,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            return View(model);
+        }
+
+        //POST: /Manage/EditPersonalInfo
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditPersonalInfo(EditPersonalInfoViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await System.Web.HttpContext.Current.GetOwinContext()
+                                                     .GetUserManager<ApplicationUserManager>()
+                                                     .FindByIdAsync(User.Identity.GetUserId());
+
+                if (user != null)
+                {
+                    user.Address = model.Address;
+                    user.City = model.City;
+                    user.PostalCode = model.PostalCode;
+                    user.PhoneNumber = model.PhoneNumber;
+
+                    var result = await UserManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        return RedirectToAction("Index", "Manage");
+                    }
+                    AddErrors(result);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+
+        }
+
 
         protected override void Dispose(bool disposing)
         {
