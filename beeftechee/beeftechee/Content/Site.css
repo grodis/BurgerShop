@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +21,51 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/* Responsive login button and register button*/
+@media only screen and (min-width: 992px) and (max-width: 1920px) {
+    #navbarSupportedContent a#registerLink.nav-link {
+        padding-left: 100px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1920px) {
+    #imageDiv {
+        padding-left: 100px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1920px) {
+    #navbarSupportedContent a#usernameLink.nav-link {
+        display: inline-block;
+    }
+}
+
+
+/*Custom class to add margin to elements*/
+.myMarginTop {
+    margin-top: 126px;
+}
+
+
+/*PayPal button*/
+.paypalButton {
+    padding: 7px;
+    border: 2px solid #002F86;
+    border-radius: 27px;
+}
+
+    .paypalButton:hover {
+        padding: 7px;
+        border: 2px solid #FF6426;
+        border-radius: 27px;
+    }
+
+
+#myUserImage {
+    width: 50px;
+    padding-left: 0px;
+    margin-left: 15px;
+    display: inline-block;
 }

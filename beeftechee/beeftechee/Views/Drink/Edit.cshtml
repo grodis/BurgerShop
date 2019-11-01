@@ -7,10 +7,9 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
-{
+<form action="/Drink/Edit" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Drink</h4>
         <hr />
@@ -23,6 +22,23 @@
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
+        </div>
+        @if (String.IsNullOrWhiteSpace(Model.ImageUrl))
+        {
+            <div class="form-group">
+                <img src="~/Content/noImage.jpg" alt="No Drink Image" />
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <img src="~/Content/DrinkImages/@Model.ImageUrl" alt="No Drink Image" />
+            </div>
+        }
+
+
+        <div class="form-group">
+            <input type="file" name="ImageUrl" />
         </div>
 
         <div class="form-group">
@@ -47,7 +63,7 @@
             </div>
         </div>
     </div>
-}
+</form>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

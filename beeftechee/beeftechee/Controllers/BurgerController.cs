@@ -54,7 +54,7 @@ namespace beeftechee.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,BreadId,MeatId,CheeseId,SauceId,VeggieId")] Burger burger)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,BreadId,MeatId,CheeseId,SauceId,VeggieId")] Burger burger, HttpPostedFileBase ImageUrl)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +71,16 @@ namespace beeftechee.Controllers
                 totalPrice += db.Cheeses.Find(burger.CheeseId) == null ? 0 : db.Cheeses.Find(burger.CheeseId).Price;
                 totalPrice += db.Veggies.Find(burger.VeggieId) == null ? 0 : db.Veggies.Find(burger.VeggieId).Price;
                 burger.Price = totalPrice;
+
+
+                //Get the photo
+                if (ImageUrl != null)
+                {
+                    ImageUrl.SaveAs(Server.MapPath("~/Content/BurgerImages/" + ImageUrl.FileName));
+                    burger.ImageUrl = ImageUrl.FileName;
+                }
+
+
 
                 //Save the Burger into the database
                 db.Burgers.Add(burger);
@@ -111,11 +121,25 @@ namespace beeftechee.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,BreadId,MeatId,CheeseId,SauceId,VeggieId")] Burger burger)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,BreadId,MeatId,CheeseId,SauceId,VeggieId")] Burger burger, HttpPostedFileBase ImageUrl)
         {
             if (ModelState.IsValid)
             {
+                
+                if (ImageUrl != null)
+                {
+                    ImageUrl.SaveAs(Server.MapPath("~/Content/BurgerImages/" + ImageUrl.FileName));
+                    burger.ImageUrl = ImageUrl.FileName;
+                }
+
                 db.Entry(burger).State = EntityState.Modified;
+
+                //Dont modify property Image
+
+                if (ImageUrl == null)
+                    db.Entry(burger).Property(m => m.ImageUrl).IsModified = false;
+
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

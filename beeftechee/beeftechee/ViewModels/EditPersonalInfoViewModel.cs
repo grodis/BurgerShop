@@ -26,5 +26,7 @@ namespace beeftechee.ViewModels
         [StringLength(14, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
         [Phone]
         public string PhoneNumber { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

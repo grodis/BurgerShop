@@ -4,60 +4,83 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="~/Content/css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="~/Content/css/flaticon.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="~/Content/css/slick.css">
+    <link rel="stylesheet" href="~/Content/css/gijgo.min.css">
+    <link rel="stylesheet" href="~/Content/css/nice-select.css">
+    <link rel="stylesheet" href="~/Content/css/all.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link href="~/Content/Site.css" rel="stylesheet" />
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/Home/Menu#burgerTable">Burger</a></li>
-                    <li><a href="/Home/Menu#drinkTable">Drink</a></li>
-                    <li>@Html.ActionLink("BurgerList", "Index", "Burger")</li>
-                    <li>@Html.ActionLink("DrinkList", "Index", "Drink")</li>
-                    <li>@Html.ActionLink("Bread", "Index", "Bread")</li>
-                    <li>@Html.ActionLink("Meat", "Index", "Meat")</li>
-                    <li>@Html.ActionLink("Cheese", "Index", "Cheese")</li>
-                    <li>@Html.ActionLink("Sauce", "Index", "Sauce")</li>
-                    <li>@Html.ActionLink("Veggetable", "Index", "Veggie")</li>
-                    <li>
-                        <a href="@Url.Action("Index", "Cart")">Cart <span class="badge">@Session["count"]</span></a>
-                    </li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    @Html.Partial("_Navbar")
 
-    @Scripts.Render("~/bundles/jquery")
+    @RenderBody()
+    @Html.Partial("_Footer")
+
+    <script src="~/Scripts/jquery-1.12.1.min.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- popper js -->
+    <script src="~/Scripts/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="~/Scripts/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="~/Scripts/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="~/Scripts/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <!-- swiper js -->
+    <script src="~/Scripts/slick.min.js"></script>
+    <script src="~/Scripts/gijgo.min.js"></script>
+    <script src="~/Scripts/jquery.nice-select.min.js"></script>
+    <!-- custom js -->
+    <script src="~/Scripts/custom.js"></script>
     <script>
-    $.validator.methods.number = function (value, element) {
-        return this.optional(element) ||
-            !isNaN(Globalize.parseFloat(value));
-    }
-    $(document).ready(function () {
-        Globalize.culture('@(System.Threading.Thread.CurrentThread.CurrentCulture.Name)');
-    });
+        $(window).resize(function () {
+            if($(window).width()< 992){
+                 $('#logoutForm').removeClass('form-inline');
+
+            }
+
+            if($(window).width() >=  992){
+                 $('#logoutForm').addClass('form-inline');
+
+            }
+
+
+
+        });
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) ||
+                !isNaN(Globalize.parseFloat(value));
+        }
+        $(document).ready(function () {
+            Globalize.culture('@(System.Threading.Thread.CurrentThread.CurrentCulture.Name)');
+        });
     </script>
     <script>
         jQuery.extend(jQuery.validator.methods, {

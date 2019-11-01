@@ -17,3 +17,5 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Debu
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Debug\beeftechee.Database.Migrations.changeOrderPostalCodeToInt.resources
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Debug\beeftechee.Database.Migrations.AddedOrderDrinkAndOrderBurger.resources
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Debug\beeftechee.Database.Migrations.changedPricToDecima.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Debug\beeftechee.Database.Migrations.AddedImageUrlToBurger.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee.Database\obj\Debug\beeftechee.Database.Migrations.addImageDrink.resources

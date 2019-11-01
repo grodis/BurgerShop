@@ -40,6 +40,6 @@ namespace beeftechee.Entities
         public int? VeggieId { get; set; }
         public Veggie Veggie { get; set; }
 
-
+        public string ImageUrl { get; set; }
     }
 }

@@ -69,6 +69,14 @@
     <Compile Include="Migrations\201910201339204_changedPricToDecima.Designer.cs">
       <DependentUpon>201910201339204_changedPricToDecima.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910301229341_AddedImageUrlToBurger.cs" />
+    <Compile Include="Migrations\201910301229341_AddedImageUrlToBurger.Designer.cs">
+      <DependentUpon>201910301229341_AddedImageUrlToBurger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910311128023_addImageDrink.cs" />
+    <Compile Include="Migrations\201910311128023_addImageDrink.Designer.cs">
+      <DependentUpon>201910311128023_addImageDrink.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -97,6 +105,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910201339204_changedPricToDecima.resx">
       <DependentUpon>201910201339204_changedPricToDecima.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301229341_AddedImageUrlToBurger.resx">
+      <DependentUpon>201910301229341_AddedImageUrlToBurger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311128023_addImageDrink.resx">
+      <DependentUpon>201910311128023_addImageDrink.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

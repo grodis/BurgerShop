@@ -7,10 +7,9 @@
 <h2>EditPersonalInfo</h2>
 
 
-@using (Html.BeginForm())
-{
+<form action="/Manage/EditPersonalInfo" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>EditPersonalInfoViewModel</h4>
         <hr />
@@ -47,13 +46,32 @@
             </div>
         </div>
 
+        @if (String.IsNullOrWhiteSpace(Model.ImageUrl))
+        {
+            <div class="form-group">
+                <img src="~/Content/noImage.jpg" alt="No Burger Image" />
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <img src="~/Content/UserImages/@Model.ImageUrl" alt="No Burger Image" />
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="file" name="ImageUrl" />
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
+</form>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

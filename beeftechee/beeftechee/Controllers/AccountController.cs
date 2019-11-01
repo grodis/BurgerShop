@@ -148,7 +148,7 @@ namespace beeftechee.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase ImageUrl)
         {
             using (var context=new ApplicationDbContext())
             {
@@ -167,6 +167,17 @@ namespace beeftechee.Controllers
                         PostalCode = model.PostalCode
 
                     };
+
+                    ////Get the photo
+                    if (ImageUrl != null)
+                    {
+                        ImageUrl.SaveAs(Server.MapPath("~/Content/UserImages/" + ImageUrl.FileName));
+                        user.ImageUrl = ImageUrl.FileName;
+                    }
+
+
+
+
                     var result = await UserManager.CreateAsync(user, model.Password);
                     var roleStore = new RoleStore<IdentityRole>(context);
                     var roleManager = new RoleManager<IdentityRole>(roleStore);

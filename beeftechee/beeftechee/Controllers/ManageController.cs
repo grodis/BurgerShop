@@ -337,7 +337,8 @@ namespace beeftechee.Controllers
                 City = user.City,
                 Address = user.Address,
                 PostalCode = user.PostalCode,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                ImageUrl = user.ImageUrl
             };
 
             return View(model);
@@ -346,7 +347,7 @@ namespace beeftechee.Controllers
         //POST: /Manage/EditPersonalInfo
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditPersonalInfo(EditPersonalInfoViewModel model)
+        public async Task<ActionResult> EditPersonalInfo(EditPersonalInfoViewModel model, HttpPostedFileBase ImageUrl)
         {
             if (ModelState.IsValid)
             {
@@ -360,6 +361,12 @@ namespace beeftechee.Controllers
                     user.City = model.City;
                     user.PostalCode = model.PostalCode;
                     user.PhoneNumber = model.PhoneNumber;
+                    if (ImageUrl != null)
+                    {
+                        ImageUrl.SaveAs(Server.MapPath("~/Content/UserImages/" + ImageUrl.FileName));
+                        user.ImageUrl = ImageUrl.FileName;
+                    }
+
 
                     var result = await UserManager.UpdateAsync(user);
                     if (result.Succeeded)

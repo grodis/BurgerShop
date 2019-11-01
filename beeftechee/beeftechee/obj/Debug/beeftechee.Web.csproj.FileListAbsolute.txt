@@ -124,3 +124,4 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftec
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.ChangedOrderModel.resources
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.xml
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.AddImageUser.resources

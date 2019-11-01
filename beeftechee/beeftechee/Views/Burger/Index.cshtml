@@ -11,6 +11,9 @@
 </p>
 <table class="table text-center">
     <tr>
+        <th>
+            Burger's Image
+        </th>
         <th class="text-center">
             Burger's name
         </th>
@@ -40,35 +43,48 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bread.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cheese.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Meat.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sauce.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Veggie.Name)
-            </td>
+<tr>
+    @if (String.IsNullOrWhiteSpace(item.ImageUrl))
+    {
+        <td>
+            <img src="~/Content/noImage.jpg" alt="No Burger Image" />
+        </td>
+    }
+    else
+    {
+        <td>
+            <img src="~/Content/BurgerImages/@item.ImageUrl" alt="No Burger Image" />
+        </td>
+    }
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Bread.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cheese.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Meat.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sauce.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Veggie.Name)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
     }
 
 </table>

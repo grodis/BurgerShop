@@ -22,6 +22,7 @@ namespace beeftechee.Models
         public string City { get; set; }
         public string Address { get; set; }
         public int PostalCode { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

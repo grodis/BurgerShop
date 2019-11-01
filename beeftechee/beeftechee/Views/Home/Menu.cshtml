@@ -4,99 +4,120 @@
     ViewBag.Title = "Menu";
 }
 
-<h2>Menu</h2>
 
 
-<table class="table" id="burgerTable">
-    <tr>
-        <th>Burger Name</th>
-        <th></th>
-    </tr>
 
-    @foreach (var burger in Model.Burgers)
-    {
-        <tr>
-            <td>
-                <h3>@burger.Name</h3>
-                <br />
-                <span class="small">@burger.Bread.Name</span>
-                <br />
-                <span class="small">@burger.Meat.Name </span>
-                <br />
-                <span class="small">@burger.Price</span>
-            </td>
-            <td>
-                @using (Html.BeginForm("AddToCartBurger", "Cart", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.Hidden("BurgerId", burger.Id)
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Add to Cart" class="btn btn-default" />
+
+
+<section class="food_menu gray_bg myMarginTop">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="section_tittle">
+
+                    <h2>Our Menu</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="nav nav-tabs food_menu_nav" id="myTab" role="tablist">
+                    <a class="active" id="Burger-tab" data-toggle="tab" href="#Burger" role="tab"
+                       aria-controls="Burger" aria-selected="false">
+                        Burgers <img src="~/Content/img/icon/play.svg"
+                                     alt="play">
+                    </a>
+                    <a id="Drink-tab" data-toggle="tab" href="#Drink" role="tab" aria-controls="Drink"
+                       aria-selected="false">Drinks <img src="~/Content/img/icon/play.svg" alt="play"></a>
+                    <a id="CustomBurger-tab" data-toggle="modal" href="#" role="tab" aria-controls="CustomBurger"
+                       aria-selected="false" data-target="#burgerModal">Make your own Burger <img src="~/Content/img/icon/play.svg" alt="play"></a>
+
+
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active single-member" id="Burger" role="tabpanel"
+                         aria-labelledby="Burger-tab">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12">
+
+                                @foreach (var burger in Model.Burgers)
+                                {
+                                    <div class="single_food_item media">
+                                        <img src="~/Content/BurgerImages/@burger.ImageUrl" class="mr-3" alt="...">
+                                        <div class="media-body align-self-center">
+                                            <h3>@burger.Name</h3>
+                                            <p>
+                                                Ingredients :
+                                                <span>@burger.Bread.Name, </span>
+                                                <span>@burger.Meat.Name, </span>
+
+                                                @if (burger.Cheese != null)
+                                                {
+                                                    <span>@burger.Cheese.Name, </span>
+                                                }
+                                                @if (burger.Sauce != null)
+                                                {
+                                                    <span>@burger.Sauce.Name, </span>
+                                                }
+                                                @if (burger.Veggie != null)
+                                                {
+                                                    <span>@burger.Veggie.Name </span>
+                                                }
+                                            </p>
+                                            <h5>€ @burger.Price</h5>
+                                            @using (Html.BeginForm("AddToCartBurger", "Cart", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("BurgerId", burger.Id)
+                                                <div class="form-group text-right addtoCartButton pr-2">
+
+                                                    <input type="submit" value="Add to Cart" class="genric-btn primary circle arrow" />
+
+                                                </div>
+                                            }
+
+
+
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
                         </div>
                     </div>
-                }
-
-
-
-            </td>
-        </tr>
-    }
-    <tr>
-        <td>
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#burgerModal">
-                ftiakse burger
-            </button>
-        </td>
-        <td></td>
-    </tr>
-</table>
-
-
-<table class="table" id="drinkTable">
-    <tr>
-        <th>Drink Name</th>
-        <th></th>
-    </tr>
-
-    @foreach (var drink in Model.Drinks)
-    {
-        <tr>
-            <td>
-                <h3> @drink.Name</h3>
-                <br />
-                <span class="small">@drink.Litre Litres</span>
-                <br />
-                <span class="small">@drink.Price Euro</span>
-            </td>
-            <td>
-                @using (Html.BeginForm("AddToCartDrink", "Cart", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.Hidden("DrinkId", drink.Id)
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Add to Cart" class="btn btn-default" />
+                    <div class="tab-pane fade single-member" id="Drink" role="tabpanel"
+                         aria-labelledby="Drink-tab">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12">
+                                @foreach (var drink in Model.Drinks)
+                                {
+                                    <div class="single_food_item media">
+                                        <img src="~/Content/DrinkImages/@drink.ImageUrl" class="mr-3" alt="...">
+                                        <div class="media-body align-self-center">
+                                            <h3>@drink.Name</h3>
+                                            <p>@drink.Litre lt</p>
+                                            <h5>€ @drink.Price</h5>
+                                            @using (Html.BeginForm("AddToCartDrink", "Cart", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("DrinkId", drink.Id)
+                                                <div class="form-group text-right addtoCartButton pr-2">
+                                                    <input type="submit" value="Add to Cart" class="genric-btn primary circle arrow" />
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </div>
                     </div>
-                }
-            </td>
-        </tr>
-    }
-
-</table>
 
 
-
-
-
-
-
-
-
-
-
-
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Modal -->
 <div class="modal fade" id="burgerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -104,29 +125,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Make your own burger!</h4>
             </div>
             <div class="modal-body">
 
 
 
-
-
-
-
-
-
-
                 @Html.Partial("_MakeYourOwnBurger", BurgerServices.GetBurger())
-
-
-
-
-
-
-
-
-
 
 
 
@@ -139,3 +143,17 @@
     </div>
 </div>
 
+@section Scripts {
+    <script>
+
+        $(window).on('resize', function () {
+            if ($(window).width() < 768) {
+                $('.addtoCartButton').addClass("text-center");
+                $('.addtoCartButton').removeClass("text-right");
+            } else {
+                $('.addtoCartButton').addClass("text-right");
+                $('.addtoCartButton').removeClass("text-center");
+            }
+        })
+    </script>
+}

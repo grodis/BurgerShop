@@ -14,114 +14,155 @@
 
 
 
+<div class="container myMarginTop">
 
 
 
+    @if (!Model.CartBurgers.Any() && !Model.CartDrinks.Any())
+    {
+        <div class="col-lg-5">
+            <div class="section_tittle">
+                <h2>Empty cart</h2>
+            </div>
+        </div>
+    }
+    else
+    {
 
-<!--BURGER TABLE IN CART-->
-<table class="table" id="tableBurgerCart">
-    <thead>
-        <tr>
-            <th>Burger</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Ingredients</th>
-            <th>Sub Total</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var cartBurger in Model.CartBurgers)
+        <div class="col-lg-5">
+            <div class="section_tittle">
+                <h2>Your order</h2>
+            </div>
+        </div>
+
+        if (Model.CartBurgers.Any())
         {
-            <tr>
-                <td>@cartBurger.Name</td>
-                <td>€@cartBurger.Price</td>
-                <td>@cartBurger.Quantity</td>
-
-                <td>
-                    <small>@cartBurger.BreadName</small>,
-                    <small>@cartBurger.MeatName</small>,
-                    <small>@cartBurger.CheeseName</small>,
-                    <small>@cartBurger.SauceName</small>,
-                    <small>@cartBurger.VeggieName</small>
-                </td>
-                <td>€@(cartBurger.Price * cartBurger.Quantity)</td>
-                <td>
-                    @using (Html.BeginForm("DeleteBurger", "Cart", FormMethod.Post))
+            <!--BURGER TABLE IN CART-->
+            <h3>Burgers</h3>
+            <table class="table text-center" id="tableBurgerCart">
+                <thead>
+                    <tr>
+                        <th>Burger</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Ingredients</th>
+                        <th>Sub Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cartBurger in Model.CartBurgers)
                     {
-                        @Html.Hidden("BurgerId", cartBurger.BurgerId)
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        <tr>
+                            <td>@cartBurger.Name</td>
+                            <td>€@cartBurger.Price</td>
+                            <td>@cartBurger.Quantity</td>
+
+                            <td>
+                                <span>@cartBurger.BreadName,</span>
+                                <span>@cartBurger.MeatName</span>
+                                @if (!String.IsNullOrWhiteSpace(cartBurger.CheeseName))
+                                {
+                                    <span>,@cartBurger.CheeseName</span>
+                                }
+
+                                @if (!String.IsNullOrWhiteSpace(cartBurger.SauceName))
+                                {
+                                    <span>,@cartBurger.SauceName</span>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(cartBurger.VeggieName))
+                                {
+                                    <span>,@cartBurger.VeggieName</span>
+                                }
+                            </td>
+                            <td>€@(cartBurger.Price * cartBurger.Quantity)</td>
+                            <td class="text-right">
+                                @using (Html.BeginForm("DeleteBurger", "Cart", FormMethod.Post))
+                                {
+                                    @Html.Hidden("BurgerId", cartBurger.BurgerId)
+                                    <button type="submit" class="genric-btn danger circle arrow">Delete</button>
+                                }
+                            </td>
+                        </tr>
                     }
-                </td>
-            </tr>
+
+                </tbody>
+
+            </table>
         }
-        @if (!Model.CartBurgers.Any())
+
+
+
+
+
+
+
+
+
+
+
+
+        if (Model.CartDrinks.Any())
         {
-            <tr>
-                <td colspan="5">No items in shopping cart</td>
-            </tr>
-        }
-    </tbody>
+            <!--DRINK TABLE IN CART-->
+            <h3>Drinks</h3>
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>Drink</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sub Total</th>
+                        <th></th>
 
-</table>
-
-
-
-
-
-
-
-
-
-
-
-<!--DRINK TABLE IN CART-->
-<table class="table">
-    <thead>
-        <tr>
-            <th>Drink</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var cartDrink in Model.CartDrinks)
-        {
-            <tr>
-                <td>@cartDrink.Name</td>
-                <td>€@cartDrink.Price</td>
-                <td>@cartDrink.Quantity</td>
-
-                <td>€@(cartDrink.Price * cartDrink.Quantity)</td>
-                <td>
-                    @using (Html.BeginForm("DeleteDrink", "Cart", FormMethod.Post))
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cartDrink in Model.CartDrinks)
                     {
-                        @Html.Hidden("DrinkId", cartDrink.DrinkId)
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        <tr>
+                            <td>@cartDrink.Name</td>
+                            <td>€@cartDrink.Price</td>
+                            <td>@cartDrink.Quantity</td>
+
+                            <td>€@(cartDrink.Price * cartDrink.Quantity)</td>
+                            <td class="text-right">
+                                @using (Html.BeginForm("DeleteDrink", "Cart", FormMethod.Post))
+                                {
+                                    @Html.Hidden("DrinkId", cartDrink.DrinkId)
+                                    <button type="submit" class="genric-btn danger circle arrow">Delete</button>
+                                }
+                            </td>
+                        </tr>
                     }
-                </td>
-            </tr>
-        }
-        @if (!Model.CartDrinks.Any())
-        {
-            <tr>
-                <td colspan="5">No items in shopping cart</td>
-            </tr>
-        }
-    </tbody>
 
-    <tfoot>
-        <tr>
-            <td colspan="3"><strong>Total</strong></td>
-            <td></td>
-            <td><strong>€@(Model.GetTotalPrice())</strong></td>
-            <td></td>
-        </tr>
-    </tfoot>
-</table>
+                </tbody>
+            </table>
+        }
+        <hr />
+        <div class="row pt-5 pb-5">
 
-@Html.ActionLink("Complete Payment", "Checkout", "Cart",null, htmlAttributes: new { @class = "btn btn-info" })
+            <div class="col-3 offset-7">
+
+                <p class="pt-2">
+                    <span><strong>Total</strong></span>
+                    <span><strong>€@(Model.GetTotalPrice())</strong></span>
+                </p>
+            </div>
+            <div class="col-2">
+                <a href='@Url.Action("Checkout", "Cart")'>
+                    <img class="paypalButton" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" />
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+    }
+
+</div>
+
 
 

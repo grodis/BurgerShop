@@ -48,10 +48,18 @@ namespace beeftechee.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Litre,Price")] Drink drink)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Litre,Price")] Drink drink, HttpPostedFileBase ImageUrl)
         {
             if (ModelState.IsValid)
             {
+                //Get the photo
+                if (ImageUrl != null)
+                {
+                    ImageUrl.SaveAs(Server.MapPath("~/Content/DrinkImages/" + ImageUrl.FileName));
+                    drink.ImageUrl = ImageUrl.FileName;
+                }
+
+
                 db.Drinks.Add(drink);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -80,11 +88,22 @@ namespace beeftechee.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Litre,Price")] Drink drink)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Litre,Price")] Drink drink, HttpPostedFileBase ImageUrl)
         {
             if (ModelState.IsValid)
             {
+                //Get the photo
+                if (ImageUrl != null)
+                {
+                    ImageUrl.SaveAs(Server.MapPath("~/Content/DrinkImages/" + ImageUrl.FileName));
+                    drink.ImageUrl = ImageUrl.FileName;
+                }
+
                 db.Entry(drink).State = EntityState.Modified;
+
+                if (ImageUrl == null)
+                    db.Entry(drink).Property(m => m.ImageUrl).IsModified = false;
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

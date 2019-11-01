@@ -172,8 +172,11 @@ namespace beeftechee.Controllers
 
 
 
-        public ActionResult AddToCartCustom([Bind(Include = "Name,BreadId,MeatId,CheeseId,SauceId,VeggieId")]Burger burger)
+        public async Task<ActionResult> AddToCartCustom([Bind(Include = "Name,BreadId,MeatId,CheeseId,SauceId,VeggieId")]Burger burger)
         {
+            ApplicationUser user = await System.Web.HttpContext.Current.GetOwinContext()
+                                                                 .GetUserManager<ApplicationUserManager>()
+                                                                 .FindByIdAsync(User.Identity.GetUserId());
             //Set the Sessions maxInt to what it was  +1
             Session["maxInt"] = Convert.ToInt32(Session["maxInt"]) + 1;
 
@@ -182,7 +185,7 @@ namespace beeftechee.Controllers
             if (ModelState.IsValid)
             {
                 //Find and place the objects into the burger by their id
-                burger.Name = "Custom Name";
+                burger.Name = $"{user.FirstName}'s Custom Burger";
                 burger.Meat = db.Meats.Find(burger.MeatId);
                 burger.Bread = db.Breads.Find(burger.BreadId);
                 burger.Sauce = db.Sauces.Find(burger.SauceId);
@@ -214,10 +217,10 @@ namespace beeftechee.Controllers
                 if (burger.Sauce != null)
                     cartBurger.SauceName = burger.Sauce.Name;
 
-                if (burger.Cheese.Name != null)
+                if (burger.Cheese != null)
                     cartBurger.CheeseName = burger.Cheese.Name;
 
-                if (burger.Veggie.Name != null)
+                if (burger.Veggie != null)
                     cartBurger.VeggieName = burger.Veggie.Name;
 
                 cart.CartBurgers.Add(cartBurger);
@@ -319,7 +322,7 @@ namespace beeftechee.Controllers
                             item_list = itemList,
                             payee = new Payee
                             {
-                                email = "Burger Shop"
+                                email = "BurgerShop@example.com"
                             }
                         });
 
@@ -369,6 +372,19 @@ namespace beeftechee.Controllers
                             return View("FailureView");
                         }
                     }
+                }
+                catch (PayPal.PaymentsException ex)
+                {
+                    Debug.WriteLine(ex.InnerException);
+                    Debug.WriteLine("----------------------");
+                    Debug.WriteLine(ex.Data);
+                    Debug.WriteLine("----------------------");
+                    Debug.WriteLine(ex.Details);
+                    Debug.WriteLine("----------------------");
+
+                    Debug.WriteLine(ex.Response);
+                    
+
                 }
                 catch (Exception ex)
                 {
