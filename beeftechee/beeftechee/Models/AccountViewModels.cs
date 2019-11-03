@@ -109,6 +109,8 @@ namespace beeftechee.Models
         [Phone]
         public string PhoneNumber { get; set; }
 
+        public string ImageUrl { get; set; }
+
     }
 
     public class ResetPasswordViewModel

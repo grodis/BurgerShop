@@ -22,20 +22,7 @@ namespace beeftechee.Controllers
             return View(await db.Veggies.ToListAsync());
         }
 
-        // GET: Veggie/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Veggie veggie = await db.Veggies.FindAsync(id);
-            if (veggie == null)
-            {
-                return HttpNotFound();
-            }
-            return View(veggie);
-        }
+        
 
         // GET: Veggie/Create
         public ActionResult Create()

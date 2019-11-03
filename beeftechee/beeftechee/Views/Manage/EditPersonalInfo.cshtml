@@ -1,82 +1,83 @@
 ﻿@model beeftechee.ViewModels.EditPersonalInfoViewModel
 
 @{
-    ViewBag.Title = "EditPersonalInfo";
+    ViewBag.Title = "Edit your personal information";
 }
 
-<h2>EditPersonalInfo</h2>
-
-
-<form action="/Manage/EditPersonalInfo" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>EditPersonalInfoViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+    <div class="container myMarginTop">
+        <div class="col-lg-8">
+            <div class="section_tittle">
+                <h2>@ViewBag.Title</h2>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <form action="/Manage/EditPersonalInfo" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control col-12" } })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control col-12" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        @if (String.IsNullOrWhiteSpace(Model.ImageUrl))
-        {
-            <div class="form-group">
-                <img src="~/Content/noImage.jpg" alt="No Burger Image" />
-            </div>
-        }
-        else
-        {
-            <div class="form-group">
-                <img src="~/Content/UserImages/@Model.ImageUrl" alt="No Burger Image" />
-            </div>
-        }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control col-12" } })
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="file" name="ImageUrl" />
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control col-12" } })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                @if (String.IsNullOrWhiteSpace(Model.ImageUrl))
+                {
+                    <div class="form-group pl-3">
+                        <img src="~/Content/noImage.jpg" alt="No Burger Image" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group pl-3">
+                        <img src="~/Content/UserImages/@Model.ImageUrl" alt="No Burger Image" />
+                    </div>
+                }
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="file" name="ImageUrl" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 pt-2 mb-5">
+                        <input type="submit" value="Save" class="genric-btn primary-border circle" />
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-</form>
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/myForm.js"></script>
 }

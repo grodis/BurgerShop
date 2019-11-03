@@ -23,20 +23,6 @@ namespace beeftechee.Controllers
             return View(await BurgerServices.GetBurgersAsync());
         }
 
-        // GET: Burger/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Burger burger = await BurgerServices.FindBurgerAsync(id);
-            if (burger == null)
-            {
-                return HttpNotFound();
-            }
-            return View(burger);
-        }
 
         // GET: Burger/Create
         public ActionResult Create()
@@ -121,7 +107,7 @@ namespace beeftechee.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,BreadId,MeatId,CheeseId,SauceId,VeggieId")] Burger burger, HttpPostedFileBase ImageUrl)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,BreadId,MeatId,CheeseId,SauceId,VeggieId")] Burger burger, HttpPostedFileBase ImageUrl)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +117,20 @@ namespace beeftechee.Controllers
                     ImageUrl.SaveAs(Server.MapPath("~/Content/BurgerImages/" + ImageUrl.FileName));
                     burger.ImageUrl = ImageUrl.FileName;
                 }
+
+                //Find and place the objects into the burger by their id
+                burger.Meat = db.Meats.Find(burger.MeatId);
+                burger.Bread = db.Breads.Find(burger.BreadId);
+                burger.Sauce = db.Sauces.Find(burger.SauceId);
+                burger.Veggie = db.Veggies.Find(burger.VeggieId);
+                burger.Cheese = db.Cheeses.Find(burger.CheeseId);
+
+                //Calculate the Total Price of the burger
+                decimal totalPrice = burger.Bread.Price + burger.Meat.Price;
+                totalPrice += db.Sauces.Find(burger.SauceId) == null ? 0 : db.Sauces.Find(burger.SauceId).Price;
+                totalPrice += db.Cheeses.Find(burger.CheeseId) == null ? 0 : db.Cheeses.Find(burger.CheeseId).Price;
+                totalPrice += db.Veggies.Find(burger.VeggieId) == null ? 0 : db.Veggies.Find(burger.VeggieId).Price;
+                burger.Price = totalPrice;
 
                 db.Entry(burger).State = EntityState.Modified;
 

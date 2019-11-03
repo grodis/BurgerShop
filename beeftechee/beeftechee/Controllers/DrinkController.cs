@@ -21,21 +21,7 @@ namespace beeftechee.Controllers
         {
             return View(await db.Drinks.ToListAsync());
         }
-
-        // GET: Drink/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Drink drink = await db.Drinks.FindAsync(id);
-            if (drink == null)
-            {
-                return HttpNotFound();
-            }
-            return View(drink);
-        }
+                
 
         // GET: Drink/Create
         public ActionResult Create()

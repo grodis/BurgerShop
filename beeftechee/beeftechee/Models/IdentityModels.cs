@@ -38,6 +38,7 @@ namespace beeftechee.Models
         }
 
 
+
         //Multiple object sets per type are not supported. The object sets 'ApplicationUsers' and 'Users' can both contain instances of type 'beeftechee.Models.ApplicationUser'.
         //public System.Data.Entity.DbSet<beeftechee.Models.ApplicationUser> ApplicationUsers { get; set; }
     }

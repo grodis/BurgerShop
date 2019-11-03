@@ -22,21 +22,7 @@ namespace beeftechee.Controllers
             return View(await db.Breads.ToListAsync());
         }
 
-        // GET: Bread/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Bread bread = await db.Breads.FindAsync(id);
-            if (bread == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bread);
-        }
-
+        
         // GET: Bread/Create
         public ActionResult Create()
         {

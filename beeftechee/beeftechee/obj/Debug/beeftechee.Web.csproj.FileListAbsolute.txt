@@ -69,6 +69,7 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\Microsoft.Owi
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\Newtonsoft.Json.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\Owin.dll
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\System.Net.Http.Formatting.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\System.Web.Helpers.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\System.Web.Http.dll
@@ -85,6 +86,7 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Da
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Entities.pdb
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Services.pdb
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\beeftechee.Services.dll.config
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.xml
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\System.Web.Helpers.xml
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\System.Web.Mvc.xml
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\System.Web.Optimization.xml
@@ -117,11 +119,9 @@ C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftec
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.InitialCreate1.resources
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.TrialPropertyUser.resources
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.ChangeUserModel.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.ChangedOrderModel.resources
+C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.AddImageUser.resources
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Web.csproj.GenerateResource.cache
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Web.csproj.CopyComplete
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.dll
 C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.pdb
-C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.ChangedOrderModel.resources
-C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.dll
-C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\bin\PayPal.xml
-C:\Users\Konstantinos\Desktop\beeftechee\beeftechee\beeftechee\obj\Debug\beeftechee.Migrations.AddImageUser.resources

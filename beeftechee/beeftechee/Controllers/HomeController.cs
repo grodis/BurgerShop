@@ -65,6 +65,12 @@ namespace beeftechee.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Spectator")]
+        public ActionResult AdminPanel()
+        {
+            return View();
+        }
+
 
     }
 }

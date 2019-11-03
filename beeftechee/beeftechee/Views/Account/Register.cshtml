@@ -103,21 +103,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    <script>
-        $(document).ready(function () {
-            var $input = $("input");
-            $($input).focus(function () {
-
-                $(this).css("border-color", "#FF7E4B");
-
-            });
-
-            $($input).focusout(function () {
-
-                $(this).css("border-color", "#CED4DA");
-
-            });
-
-        });
-    </script>
+    <script src="~/Scripts/myForm.js"></script>
 }

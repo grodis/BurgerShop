@@ -22,21 +22,7 @@ namespace beeftechee.Controllers
             return View(await db.Cheeses.ToListAsync());
         }
 
-        // GET: Cheese/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cheese cheese = await db.Cheeses.FindAsync(id);
-            if (cheese == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cheese);
-        }
-
+       
         // GET: Cheese/Create
         public ActionResult Create()
         {

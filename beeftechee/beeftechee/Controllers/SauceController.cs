@@ -22,20 +22,7 @@ namespace beeftechee.Controllers
             return View(await db.Sauces.ToListAsync());
         }
 
-        // GET: Sauce/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Sauce sauce = await db.Sauces.FindAsync(id);
-            if (sauce == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sauce);
-        }
+        
 
         // GET: Sauce/Create
         public ActionResult Create()

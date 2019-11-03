@@ -17,6 +17,7 @@ using System.Web.Mvc;
 
 namespace beeftechee.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly BeeftecheeDb db = new BeeftecheeDb();
@@ -261,7 +262,6 @@ namespace beeftechee.Controllers
             order.ContactPhone = user.PhoneNumber;
             order.OrderDate = DateTime.Now;
             order.TotalPrice = cart.GetTotalPrice();
-            Debug.WriteLine(order.TotalPrice);
             var stringArrayPrice = order.TotalPrice.ToString("#.##").Split(',');
             var StringPriceWithDot = String.Join(".", stringArrayPrice);
 

@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 0px;
     padding-bottom: 0px;
+
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -65,7 +66,34 @@ textarea {
 
 #myUserImage {
     width: 50px;
+    height: 50px;
     padding-left: 0px;
     margin-left: 15px;
     display: inline-block;
 }
+
+.fab.fa-twitter.fa-2x {
+    color: #999999;
+}
+
+    .fab.fa-twitter.fa-2x:hover {
+        color: #FF6426;
+    }
+
+.fab.fa-google.fa-2x {
+    color: #999999;
+}
+
+    .fab.fa-google.fa-2x:hover {
+        color: #FF6426;
+    }
+
+.fab.fa-facebook-square.fa-2x {
+    color: #999999;
+}
+
+    .fab.fa-facebook-square.fa-2x:hover {
+        color: #FF6426;
+    }
+
+

@@ -18,57 +18,57 @@ namespace beeftechee.Migrations
 
         protected override void Seed(beeftechee.Models.ApplicationDbContext context)
         {
-        //    if (!context.Roles.Any(r=>r.Name=="Admin"))
-        //    {
-        //        var store = new RoleStore<IdentityRole>(context);
-        //        var manager = new RoleManager<IdentityRole>(store);
-        //        var role = new IdentityRole { Name = "Admin" };
+            if (!context.Roles.Any(r => r.Name == "Admin"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Admin" };
 
 
-        //        manager.Create(role);
+                manager.Create(role);
 
 
-        //    }
-        //    if (!context.Roles.Any(r => r.Name == "Spectator"))
-        //    {
-        //        var store = new RoleStore<IdentityRole>(context);
-        //        var manager = new RoleManager<IdentityRole>(store);
-        //        var role = new IdentityRole { Name = "Spectator" };
+            }
+            //    if (!context.Roles.Any(r => r.Name == "Spectator"))
+            //    {
+            //        var store = new RoleStore<IdentityRole>(context);
+            //        var manager = new RoleManager<IdentityRole>(store);
+            //        var role = new IdentityRole { Name = "Spectator" };
 
 
-        //        manager.Create(role);
+            //        manager.Create(role);
 
-        //    }
-        //    if (!context.Roles.Any(r => r.Name == "User"))
-        //    {
-        //        var store = new RoleStore<IdentityRole>(context);
-        //        var manager = new RoleManager<IdentityRole>(store);
-        //        var role = new IdentityRole { Name = "User" };
-
-
-        //        manager.Create(role);
-
-        //    }
+            //    }
+            //    if (!context.Roles.Any(r => r.Name == "User"))
+            //    {
+            //        var store = new RoleStore<IdentityRole>(context);
+            //        var manager = new RoleManager<IdentityRole>(store);
+            //        var role = new IdentityRole { Name = "User" };
 
 
-        //    var PasswordHash = new PasswordHasher();
+            //        manager.Create(role);
+
+            //    }
 
 
-        //    if (!context.Users.Any(u => u.UserName == "admin@admin.net"))
-        //    {
-        //        var store = new UserStore<ApplicationUser>(context);
-        //        var manager = new UserManager<ApplicationUser>(store);
-        //        var user = new ApplicationUser
-        //        {
-        //            UserName = "admin@admin.net",
-        //            Email = "admin@admin.net",
-                
-        //            PasswordHash = PasswordHash.HashPassword("Grodis1!")
-        //        };
+            var PasswordHash = new PasswordHasher();
 
-        //        manager.Create(user);
-        //        manager.AddToRole(user.Id, "Admin");
-        //    }
+
+            if (!context.Users.Any(u => u.UserName == "admin@admin.net"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser
+                {
+                    UserName = "admin@admin.net",
+                    Email = "admin@admin.net",
+
+                    PasswordHash = PasswordHash.HashPassword("Grodis1!")
+                };
+
+                manager.Create(user);
+                manager.AddToRole(user.Id, "Admin");
+            }
         }
     }
 }

@@ -2,47 +2,67 @@
 
 @{
     ViewBag.Title = "Delete";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Drink</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Litre)
-        </dt>
+<div class="container pt-5 pb-5 mb-5">
+    <div>
+        <h3>Are you sure you want to delete this?</h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Litre)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Litre)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Litre)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="mb-4">
+                Drink Image
+            </dt >
+            @if (String.IsNullOrWhiteSpace(Model.ImageUrl))
+            {
+                <dd class="mb-5">
+                    <img src="~/Content/noImage.jpg" alt="No Drink Image" />
+                </dd>
+            }
+            else
+            {
+                <dd class="mb-5">
+                    <img src="~/Content/DrinkImages/@Model.ImageUrl" alt="No Drink Image" />
+                </dd>
+            }
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color  mb-5 pb-5">
+                <input type="submit" value="Delete" class="btn btn-secondary" />
+                @Html.ActionLink("Back to List", "Index",null,new {@class="btn btn-secondary" })
+            </div>
+        }
+    </div>
 </div>
