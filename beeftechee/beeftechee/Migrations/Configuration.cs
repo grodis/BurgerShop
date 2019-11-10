@@ -29,16 +29,16 @@ namespace beeftechee.Migrations
 
 
             }
-            //    if (!context.Roles.Any(r => r.Name == "Spectator"))
-            //    {
-            //        var store = new RoleStore<IdentityRole>(context);
-            //        var manager = new RoleManager<IdentityRole>(store);
-            //        var role = new IdentityRole { Name = "Spectator" };
+            if (!context.Roles.Any(r => r.Name == "Supervisor"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Supervisor" };
 
 
-            //        manager.Create(role);
+                manager.Create(role);
 
-            //    }
+            }
             //    if (!context.Roles.Any(r => r.Name == "User"))
             //    {
             //        var store = new RoleStore<IdentityRole>(context);

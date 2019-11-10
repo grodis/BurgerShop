@@ -1,0 +1,58 @@
+﻿
+
+@{
+
+    Layout = null;
+
+}
+
+<div>
+    <div class="container-fluid">
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-danger mb-2">Bread's List</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <input class="mb-3 col-4" ng-model="search.Name" placeholder="Search by Bread's Name">
+
+
+                    <table class="table table-bordered mb-5 mt-5" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    Bread's name
+                                </th>
+                                <th class="text-center">
+                                    Price
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="bread in breads|filter:search:strict">
+                                <td>
+                                    {{bread.Name}}
+                                </td>
+                                <td>
+                                    €{{bread.Price}}
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+

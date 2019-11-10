@@ -2312,10 +2312,7 @@ ul {
   top: 0;
 }
 
-/* line 68, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_menu.scss */
-.menu_fixed span {
-  color: #000 !important;
-}
+
 
 /* line 71, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_menu.scss */
 .menu_fixed .btn_1 {
@@ -2552,7 +2549,7 @@ ul {
   content: "";
   bottom: -50px;
   z-index: -1;
-  background: url(../img/banner_overlay.png) bottom right no-repeat;
+  
   right: 19%;
 }
 

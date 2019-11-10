@@ -12,6 +12,7 @@ using beeftechee.Entities.Ingredient_Entities;
 
 namespace beeftechee.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class BreadController : Controller
     {
         private BeeftecheeDb db = new BeeftecheeDb();
@@ -51,12 +52,12 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Bread bread = await db.Breads.FindAsync(id);
             if (bread == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(bread);
         }
@@ -82,12 +83,12 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Bread bread = await db.Breads.FindAsync(id);
             if (bread == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(bread);
         }

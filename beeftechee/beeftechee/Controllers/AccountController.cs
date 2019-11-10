@@ -60,6 +60,7 @@ namespace beeftechee.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+            
         }
 
         //
@@ -359,7 +360,18 @@ namespace beeftechee.Controllers
             {
                 return RedirectToAction("Login");
             }
+            if (loginInfo.Login.LoginProvider == "Google")
+            {
+                var externalIdentity = AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+                var emailClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email);
+                var lastNameClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname);
+                var givenNameClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName);
 
+                var email = emailClaim.Value;
+                var firstName = givenNameClaim.Value;
+                var lastname = lastNameClaim.Value;
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email, FirstName =  firstName,LastName= lastname });
+            }
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
@@ -377,6 +389,7 @@ namespace beeftechee.Controllers
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
+
         }
 
         //
@@ -399,7 +412,7 @@ namespace beeftechee.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

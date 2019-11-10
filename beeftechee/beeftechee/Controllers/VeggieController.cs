@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using beeftechee.Database;
+﻿using beeftechee.Database;
 using beeftechee.Entities.Ingredient_Entities;
+using System.Data.Entity;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace beeftechee.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class VeggieController : Controller
     {
         private BeeftecheeDb db = new BeeftecheeDb();
@@ -52,12 +48,12 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Veggie veggie = await db.Veggies.FindAsync(id);
             if (veggie == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(veggie);
         }
@@ -83,12 +79,12 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Veggie veggie = await db.Veggies.FindAsync(id);
             if (veggie == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(veggie);
         }

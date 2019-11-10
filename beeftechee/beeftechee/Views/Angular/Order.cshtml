@@ -1,0 +1,108 @@
+﻿@{
+
+    Layout = null;
+
+}
+
+<div>
+    <div class="container-fluid">
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-danger mb-2">Order's List</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <input class="mb-3 col-4" ng-model="search.UserName" placeholder="Search by Username">
+
+
+                    <table class="table table-bordered mb-5 mt-5" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    Order Date
+                                </th>
+                                <th class="text-center">
+                                    User
+                                </th>
+                                <th class="text-center">
+                                    Total Cost
+                                </th>
+                                <th class="text-center">
+                                    Address
+                                </th>
+                                <th class="text-center">
+                                    City
+                                </th>
+                                <th class="text-center">
+                                    Contact Phone
+                                </th>
+
+                                <th class="text-center">
+                                    Burgers
+                                </th>
+                                <th class="text-center">
+                                    Drinks
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="order in orders|filter:search:strict">
+                                <td>
+                                    {{order.OrderDate}}
+                                </td>
+                                <td>
+                                    {{order.UserName}}
+                                </td>
+                                <td>
+                                    €{{order.TotalPrice}}
+                                </td>
+                                <td>
+                                    {{order.Address}}
+                                </td>
+                                <td>
+                                    {{order.City}}
+                                </td>
+                                <td>
+                                    {{order.ContactPhone}}
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li ng-repeat="burger in order.OrderBurgers">
+                                            <small> {{burger.Quantity}}</small>
+                                            <small><strong>{{burger.Name}}</strong> </small>
+
+                                        </li>
+                                    </ul>
+
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li ng-repeat="drink in order.OrderDrinks">
+                                            <small> {{drink.Quantity}}</small>
+                                            <small><strong>{{drink.Name}}</strong> </small>
+
+                                        </li>
+                                    </ul>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+
+

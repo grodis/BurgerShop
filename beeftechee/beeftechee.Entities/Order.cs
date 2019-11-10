@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace beeftechee.Entities
 
 
         public int Id { get; set; }
+        [DataType(DataType.Currency)]
         public decimal TotalPrice { get; set; }
 
         public DateTime OrderDate { get; set; }

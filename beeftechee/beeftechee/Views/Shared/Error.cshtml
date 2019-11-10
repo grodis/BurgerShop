@@ -2,8 +2,25 @@
 
 @{
     ViewBag.Title = "Error";
+    Layout = null;
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<!DOCTYPE html>
+<html>
+<head>
 
+    <link href="~/Content/css/erropage.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="error_Background">
+
+
+        @Html.ActionLink("Back to Homepage","Index" ,"Home",null,new {id="Button_Back" })
+
+    </div>
+
+
+</body>
+</html>

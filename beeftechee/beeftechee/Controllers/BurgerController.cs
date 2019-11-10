@@ -13,6 +13,8 @@ using beeftechee.Services;
 
 namespace beeftechee.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class BurgerController : Controller
     {
         private readonly BeeftecheeDb db = new BeeftecheeDb();
@@ -87,12 +89,13 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Burger burger = await db.Burgers.FindAsync(id);
             if (burger == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             ViewBag.BreadId = new SelectList(db.Breads, "Id", "Name", burger.BreadId);
             ViewBag.CheeseId = new SelectList(db.Cheeses, "Id", "Name", burger.CheeseId);
@@ -156,12 +159,12 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Burger burger = await BurgerServices.FindBurgerAsync(id);
             if (burger == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(burger);
         }

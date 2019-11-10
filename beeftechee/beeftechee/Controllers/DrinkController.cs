@@ -12,6 +12,8 @@ using beeftechee.Entities;
 
 namespace beeftechee.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class DrinkController : Controller
     {
         private BeeftecheeDb db = new BeeftecheeDb();
@@ -59,12 +61,12 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Drink drink = await db.Drinks.FindAsync(id);
             if (drink == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(drink);
         }
@@ -101,12 +103,12 @@ namespace beeftechee.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             Drink drink = await db.Drinks.FindAsync(id);
             if (drink == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(drink);
         }

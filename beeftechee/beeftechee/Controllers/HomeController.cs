@@ -1,6 +1,9 @@
 ﻿using beeftechee.Database;
+using beeftechee.Models;
 using beeftechee.Services;
 using beeftechee.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +20,14 @@ namespace beeftechee.Controllers
         {
             return View();
         }
-
-
+        [Authorize]
+        public async Task<ActionResult> Chat()
+        {
+            ApplicationUser user = await System.Web.HttpContext.Current.GetOwinContext()
+                                                     .GetUserManager<ApplicationUserManager>()
+                                                     .FindByIdAsync(User.Identity.GetUserId());
+            return View(user);
+        }
 
 
 
@@ -65,8 +74,14 @@ namespace beeftechee.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin, Spectator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminPanel()
+        {
+            return View();
+        }
+
+        [Authorize(Roles="Supervisor")]
+        public ActionResult Demo()
         {
             return View();
         }

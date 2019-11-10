@@ -1,0 +1,111 @@
+﻿@model IEnumerable<beeftechee.Entities.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid myPadding">
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary mb-2">Orders List</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Order Date
+                            </th>
+                            <th class="text-center">
+                                User
+                            </th>
+                            <th class="text-center">
+                                Order total cost
+                            </th>
+                            <th class="text-center">
+                                Address
+                            </th>
+                            <th class="text-center">
+                                City
+                            </th>
+                            <th class="text-center">
+                                Contact Phone
+                            </th>
+
+                            <th class="text-center">
+                                Burgers
+                            </th>
+                            <th class="text-center">
+                                Drinks
+                            </th>
+                            <th class="text-center">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OrderDate)
+                                </td>
+
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ContactPhone)
+                                </td>
+
+                                <td>
+                                    @foreach (var burger in item.OrderBurgers)
+                                    {
+                                        <small><strong>@burger.Name </strong></small>
+                                        <small>(@burger.Quantity) </small>
+                                        <small>@burger.BreadName </small>
+                                        <small>@burger.MeatName </small>
+                                        <small>@burger.SauceName </small>
+                                        <small>@burger.VeggieName </small>
+                                        <small>@burger.CheeseName </small>
+                                        <br />
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var drink in item.OrderDrinks)
+                                    {
+                                        <small><strong>@drink.Name</strong> @drink.Litre Lt</small><br />
+                                    }
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

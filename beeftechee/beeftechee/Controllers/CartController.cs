@@ -1,4 +1,5 @@
 ﻿using beeftechee.App_Start;
+using beeftechee.Attributes;
 using beeftechee.Database;
 using beeftechee.Entities;
 using beeftechee.Models;
@@ -17,12 +18,13 @@ using System.Web.Mvc;
 
 namespace beeftechee.Controllers
 {
-    [Authorize]
+ 
     public class CartController : Controller
     {
         private readonly BeeftecheeDb db = new BeeftecheeDb();
 
         // GET: Cart
+        [Authorize]
         public ActionResult Index()
         {
             var cart = CreateOrGetCart();
@@ -30,13 +32,13 @@ namespace beeftechee.Controllers
             return View(cart);
         }
 
-
-
+        [AjaxAuthorize]
         public async Task<ActionResult> AddToCartBurger(int? BurgerId)
         {
+
             //To build later
             if (BurgerId == null)
-                return HttpNotFound();
+                return View("Error");
 
 
             var burger = await BurgerServices.FindBurgerAsync(BurgerId);
@@ -72,17 +74,12 @@ namespace beeftechee.Controllers
             }
 
             SaveCart(cart);
-
-            return RedirectToAction("Menu", "Home");
+            return new EmptyResult();
         }
 
 
 
-
-
-
-
-
+        [Authorize]
         public ActionResult DeleteBurger(int BurgerId)
         {
 
@@ -108,7 +105,7 @@ namespace beeftechee.Controllers
 
 
 
-
+        [AjaxAuthorize]
         //DRINK
         public async Task<ActionResult> AddToCartDrink(int? DrinkId)
         {
@@ -142,11 +139,11 @@ namespace beeftechee.Controllers
 
             SaveCart(cart);
 
-            return RedirectToAction("Menu", "Home");
+            return new EmptyResult();
         }
 
 
-
+        [Authorize]
         public async Task<ActionResult> DeleteDrink(int DrinkId)
         {
             var drink = await DrinkServices.FindDrinkAsync(DrinkId);
@@ -247,7 +244,7 @@ namespace beeftechee.Controllers
 
 
 
-
+        [Authorize]
         public async Task<ActionResult> Checkout()
         {
             var cart = CreateOrGetCart();

@@ -65,17 +65,16 @@
                                                 }
                                             </p>
                                             <h5>€ @burger.Price</h5>
-                                            @using (Html.BeginForm("AddToCartBurger", "Cart", FormMethod.Post))
+                                            @using (Html.BeginForm("AddToCartBurger", "Cart", FormMethod.Post, htmlAttributes: new { @class = "myFormBurger" }))
                                             {
                                                 @Html.AntiForgeryToken()
                                                 @Html.Hidden("BurgerId", burger.Id)
-                                                <div class="form-group text-right addtoCartButton pr-2">
+                                        <div class="form-group text-right addtoCartButton pr-2">
 
-                                                    <input type="submit" value="Add to Cart" class="genric-btn primary circle arrow" />
+                                            <input type="submit" value="Add to Cart" class="genric-btn primary circle arrow" />
 
-                                                </div>
+                                        </div>
                                             }
-
 
 
                                         </div>
@@ -97,7 +96,7 @@
                                             <h3>@drink.Name</h3>
                                             <p>@drink.Litre lt</p>
                                             <h5>€ @drink.Price</h5>
-                                            @using (Html.BeginForm("AddToCartDrink", "Cart", FormMethod.Post))
+                                            @using (Html.BeginForm("AddToCartDrink", "Cart", FormMethod.Post, htmlAttributes: new { @class = "myFormDrink" })) 
                                             {
                                                 @Html.AntiForgeryToken()
                                                 @Html.Hidden("DrinkId", drink.Id)
@@ -146,6 +145,7 @@
 @section Scripts {
     <script>
 
+        var count = parseInt($("#cartSpan").text());
         $(window).on('resize', function () {
             if ($(window).width() < 768) {
                 $('.addtoCartButton').addClass("text-center");
@@ -155,5 +155,49 @@
                 $('.addtoCartButton').removeClass("text-center");
             }
         })
+
+        $(function () {
+            $(document).ajaxError(function (e, xhr) {
+                if (xhr.status == 403) {
+                    var response = $.parseJSON(xhr.responseText);
+                    window.location = response.LogOnUrl;
+                }
+            });
+        });
+
+        $(".myFormBurger").on('submit', function (event) {
+            event.preventDefault();
+            var id = parseInt($(this).children("#BurgerId").val());
+            $.ajax({
+                type: 'POST',
+                data: { BurgerId: id },
+                url: '@Url.Action("AddToCartBurger", "Cart")',
+                success: function (data) {
+                    count = count + 1;
+                    $("#cartSpan").text(count);
+                    $("#cartSpan").animate({ fontSize: '14px'});
+                    $("#cartSpan").animate({fontSize: '12px'});
+
+                }
+            });
+        });
+
+        $(".myFormDrink").on('submit', function (event) {
+            event.preventDefault();
+            var id = parseInt($(this).children("#DrinkId").val());
+            $.ajax({
+                type: 'POST',
+                data: { DrinkId: id },
+                url: '@Url.Action("AddToCartDrink", "Cart")',
+                success: function (data) {
+                    count = count + 1;
+                    $("#cartSpan").text(count);
+                    $("#cartSpan").animate({ fontSize: '14px'});
+                    $("#cartSpan").animate({fontSize: '12px'});
+
+                }
+            });
+        });
+
     </script>
 }

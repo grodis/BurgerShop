@@ -1,0 +1,35 @@
+﻿body, html {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-color: #E2372D;
+}
+
+#error_Background {
+    /* The image used */
+    background-image: url('../../Content/ErrorImage/404-not-found-t.jpg');
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#Button_Back {
+    border: 2px solid #F8F9F7;
+    background-color: #E2372D;
+    width: 190px;
+    height: 20px;
+    border-radius: 5%;
+    color: white;
+    float: right;
+    position: relative;
+    top: 30px;
+    right: 80px;
+    text-decoration: none;
+    text-align:center;
+    display:inline-block;
+    padding:10px;
+   
+}

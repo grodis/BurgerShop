@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title / BeefTechee</title>
-    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <!-- animate CSS -->
     <link rel="stylesheet" href="~/Content/css/animate.css">
     <!-- owl carousel CSS -->
@@ -27,18 +27,20 @@
     <link rel="stylesheet" href="~/Content/css/style.css">
     <link href="~/Content/Site.css" rel="stylesheet" />
 
+
 </head>
 <body>
+    <!--To fix Flash of Unstyled content-->
+    <script>0</script>
     @Html.Partial("_Navbar")
 
     @RenderBody()
     @Html.Partial("_Footer")
 
     <script src="~/Scripts/jquery-1.12.1.min.js"></script>
-    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/jqueryval")
+
 
     <!-- popper js -->
     <script src="~/Scripts/popper.min.js"></script>
@@ -58,43 +60,16 @@
     <script src="~/Scripts/jquery.nice-select.min.js"></script>
     <!-- custom js -->
     <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/globalize.js"></script>
+    <script src="~/Scripts/globalize/currency.js"></script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jQueryFixes.js"></script>
     <script>
-        $(window).resize(function () {
-            if($(window).width()< 992){
-                 $('#logoutForm').removeClass('form-inline');
 
-            }
-
-            if($(window).width() >=  992){
-                 $('#logoutForm').addClass('form-inline');
-
-            }
-
-
-
+        $(window).ready(function () {
+            // Animate loader off screen
+            $(".se-pre-con").delay(1600).fadeOut("slow");
         });
-        $.validator.methods.number = function (value, element) {
-            return this.optional(element) ||
-                !isNaN(Globalize.parseFloat(value));
-        }
-        $(document).ready(function () {
-            Globalize.culture('@(System.Threading.Thread.CurrentThread.CurrentCulture.Name)');
-        });
-    </script>
-    <script>
-        jQuery.extend(jQuery.validator.methods, {
-            range: function (value, element, param) {
-                //Use the Globalization plugin to parse the value
-                var val = Globalize.parseFloat(value);
-                return this.optional(element) || (
-                    val >= param[0] && val <= param[1]);
-            }
-        });
-        $.validator.methods.date = function (value, element) {
-            return this.optional(element) ||
-                Globalize.parseDate(value) ||
-                Globalize.parseDate(value, "yyyy-MM-dd");
-        }
     </script>
 
 </body>
