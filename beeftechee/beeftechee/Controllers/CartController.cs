@@ -32,6 +32,86 @@ namespace beeftechee.Controllers
             return View(cart);
         }
 
+        [Authorize]
+        public async Task<ActionResult> AddToCartBurgerFromCart(int? BurgerId, int Quantity)
+        {
+
+            //To build later
+            if (BurgerId == null)
+                return View("Error");
+
+
+            var burger = await BurgerServices.FindBurgerAsync(BurgerId);
+
+            //Create the cart if it doesnt exist or get the existing cart
+            var cart = CreateOrGetCart();
+
+            //Find if the burger exists in the CartBurger list
+            var existingBurger = cart.CartBurgers.FirstOrDefault(x => x.BurgerId == burger.Id);
+
+
+            if (existingBurger != null)
+            {
+                existingBurger.Quantity = Quantity;
+                var cartburgersCount = 0;
+                var cartdrinksCount = 0;
+                var cartBurgersLength = cart.CartBurgers.Count;
+                var cartDrinksLength = cart.CartDrinks.Count;
+                for (int i = 0; i < cartBurgersLength; i++)
+                {
+                    cartburgersCount += cart.CartBurgers[i].Quantity;
+                }
+
+                for (int i = 0; i < cartDrinksLength; i++)
+                {
+                    cartdrinksCount += cart.CartDrinks[i].Quantity;
+                }
+
+                Session["count"] = cartburgersCount + cartdrinksCount;
+                
+
+            }
+
+            SaveCart(cart);
+            return RedirectToAction("Index", "Cart");
+        }
+
+        public async Task<ActionResult> AddToCartDrinkFromCart(int? DrinkId, int Quantity)
+        {
+            var drink = await DrinkServices.FindDrinkAsync(DrinkId);
+
+            //Create the cart if it doesnt exist or get the existing cart
+            var cart = CreateOrGetCart();
+
+            //Find if the drink exists in the CartDrink list
+            var existingDrink = cart.CartDrinks.FirstOrDefault(x => x.DrinkId == drink.Id);
+
+            //If it does,add 1 to its quantity
+            if (existingDrink != null)
+            {
+                existingDrink.Quantity = Quantity;
+                var cartburgersCount = 0;
+                var cartdrinksCount = 0;
+                var cartBurgersLength = cart.CartBurgers.Count;
+                var cartDrinksLength = cart.CartDrinks.Count;
+                for (int i = 0; i < cartBurgersLength; i++)
+                {
+                    cartburgersCount += cart.CartBurgers[i].Quantity;
+                }
+
+                for (int i = 0; i < cartDrinksLength; i++)
+                {
+                    cartdrinksCount += cart.CartDrinks[i].Quantity;
+                }
+
+                Session["count"] = cartburgersCount + cartdrinksCount;
+            }
+
+            SaveCart(cart);
+            return RedirectToAction("Index", "Cart");
+        }
+
+
         [AjaxAuthorize]
         public async Task<ActionResult> AddToCartBurger(int? BurgerId)
         {
@@ -169,9 +249,12 @@ namespace beeftechee.Controllers
 
 
 
-
+        [Authorize]
         public async Task<ActionResult> AddToCartCustom([Bind(Include = "Name,BreadId,MeatId,CheeseId,SauceId,VeggieId")]Burger burger)
         {
+            if (burger.BreadId == 0 || burger.MeatId == 0)
+                return RedirectToAction("Menu", "Home");
+
             ApplicationUser user = await System.Web.HttpContext.Current.GetOwinContext()
                                                                  .GetUserManager<ApplicationUserManager>()
                                                                  .FindByIdAsync(User.Identity.GetUserId());
@@ -252,6 +335,8 @@ namespace beeftechee.Controllers
             ApplicationUser user = await System.Web.HttpContext.Current.GetOwinContext()
                                                                  .GetUserManager<ApplicationUserManager>()
                                                                  .FindByIdAsync(User.Identity.GetUserId());
+            
+
             order.UserName = user.UserName;
             order.Address = user.Address;
             order.PostalCode = user.PostalCode;

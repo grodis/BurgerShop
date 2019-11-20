@@ -73,6 +73,7 @@
     <Compile Include="BurgerServices.cs" />
     <Compile Include="CommonTools.cs" />
     <Compile Include="DrinkServices.cs" />
+    <Compile Include="IngredientServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

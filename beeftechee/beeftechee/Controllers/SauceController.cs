@@ -1,7 +1,5 @@
-﻿using beeftechee.Database;
-using beeftechee.Entities.Ingredient_Entities;
-using System.Data.Entity;
-using System.Net;
+﻿using beeftechee.Entities.Ingredient_Entities;
+using beeftechee.Services;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -11,12 +9,12 @@ namespace beeftechee.Controllers
 
     public class SauceController : Controller
     {
-        private BeeftecheeDb db = new BeeftecheeDb();
+        private IngredientServices IngredientServices = new Services.IngredientServices();
 
         // GET: Sauce
         public async Task<ActionResult> Index()
         {
-            return View(await db.Sauces.ToListAsync());
+            return View(await IngredientServices.GetAllAsync<Sauce>());
         }
 
         
@@ -36,8 +34,7 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Sauces.Add(sauce);
-                await db.SaveChangesAsync();
+                await IngredientServices.AddAsync(sauce);
                 return RedirectToAction("Index");
             }
 
@@ -51,7 +48,7 @@ namespace beeftechee.Controllers
             {
                 return View("Error");
             }
-            Sauce sauce = await db.Sauces.FindAsync(id);
+            Sauce sauce = await IngredientServices.GetAsync<Sauce>(id);
             if (sauce == null)
             {
                 return View("Error");
@@ -68,8 +65,7 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sauce).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await IngredientServices.UpdateAsync(sauce);
                 return RedirectToAction("Index");
             }
             return View(sauce);
@@ -82,7 +78,7 @@ namespace beeftechee.Controllers
             {
                 return View("Error");
             }
-            Sauce sauce = await db.Sauces.FindAsync(id);
+            Sauce sauce = await IngredientServices.GetAsync<Sauce>(id);
             if (sauce == null)
             {
                 return View("Error");
@@ -95,19 +91,9 @@ namespace beeftechee.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Sauce sauce = await db.Sauces.FindAsync(id);
-            db.Sauces.Remove(sauce);
-            await db.SaveChangesAsync();
+            Sauce sauce = await IngredientServices.GetAsync<Sauce>(id);
+            await IngredientServices.DeleteAsync(sauce);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

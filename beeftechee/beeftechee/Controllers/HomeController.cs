@@ -4,9 +4,6 @@ using beeftechee.Services;
 using beeftechee.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -36,11 +33,11 @@ namespace beeftechee.Controllers
         public async Task<ActionResult> Menu()
         {
 
-            ViewBag.BreadId = new SelectList(db.Breads, "Id", "Name");
-            ViewBag.CheeseId = new SelectList(db.Cheeses, "Id", "Name");
-            ViewBag.MeatId = new SelectList(db.Meats, "Id", "Name");
-            ViewBag.SauceId = new SelectList(db.Sauces, "Id", "Name");
-            ViewBag.VeggieId = new SelectList(db.Veggies, "Id", "Name");
+            ViewBag.BreadId = new SelectList(db.Breads, "Id", "NamePrice");
+            ViewBag.CheeseId = new SelectList(db.Cheeses, "Id", "NamePrice");
+            ViewBag.MeatId = new SelectList(db.Meats, "Id", "NamePrice");
+            ViewBag.SauceId = new SelectList(db.Sauces, "Id", "NamePrice");
+            ViewBag.VeggieId = new SelectList(db.Veggies, "Id", "NamePrice");
 
 
             var model = new BurgerDrinkViewModel

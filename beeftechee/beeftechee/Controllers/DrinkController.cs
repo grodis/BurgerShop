@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using beeftechee.Database;
+using beeftechee.Entities;
+using beeftechee.Services;
 using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using beeftechee.Database;
-using beeftechee.Entities;
 
 namespace beeftechee.Controllers
 {
@@ -17,11 +13,12 @@ namespace beeftechee.Controllers
     public class DrinkController : Controller
     {
         private BeeftecheeDb db = new BeeftecheeDb();
+        
 
         // GET: Drink
         public async Task<ActionResult> Index()
         {
-            return View(await db.Drinks.ToListAsync());
+            return View(await DrinkServices.GetDrinksAsync());
         }
                 
 
@@ -32,8 +29,6 @@ namespace beeftechee.Controllers
         }
 
         // POST: Drink/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,Litre,Price")] Drink drink, HttpPostedFileBase ImageUrl)
@@ -48,8 +43,7 @@ namespace beeftechee.Controllers
                 }
 
 
-                db.Drinks.Add(drink);
-                await db.SaveChangesAsync();
+                await DrinkServices.AddDrinkAsync(drink);
                 return RedirectToAction("Index");
             }
 
@@ -63,7 +57,7 @@ namespace beeftechee.Controllers
             {
                 return View("Error");
             }
-            Drink drink = await db.Drinks.FindAsync(id);
+            Drink drink = await DrinkServices.FindDrinkAsync(id);
             if (drink == null)
             {
                 return View("Error");

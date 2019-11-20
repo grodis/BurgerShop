@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace beeftechee.Models.CartModels
+﻿namespace beeftechee.Models.CartModels
 {
     //VIEW MODEL
     public class CartDrink

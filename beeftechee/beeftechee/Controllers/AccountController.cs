@@ -1,15 +1,13 @@
-﻿using System;
-using System.Globalization;
+﻿using beeftechee.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using beeftechee.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace beeftechee.Controllers
 {
@@ -184,9 +182,10 @@ namespace beeftechee.Controllers
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
                     var userStore = new UserStore<ApplicationUser>(context);
                     var userManager = new UserManager<ApplicationUser>(userStore);
-                    UserManager.AddToRole(user.Id, "User");
+                    
                 if (result.Succeeded)
                     {
+                        UserManager.AddToRole(user.Id, "User");
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -412,7 +411,8 @@ namespace beeftechee.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                var name = info.DefaultUserName;
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = name, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

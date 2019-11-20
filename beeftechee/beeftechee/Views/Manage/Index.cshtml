@@ -15,7 +15,7 @@
         </div>
     </div>
     <hr />
-    <dl class="dl-horizontal">
+    @*<dl class="dl-horizontal">*@
 
 
 
@@ -29,8 +29,8 @@
 
              Uncomment the following block after you have set up two-factor authentication
         *@
-        @*
-            <dt>Phone Number:</dt>
+        
+            @*<dt>Phone Number:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")
                 @if (Model.PhoneNumber != null)
@@ -45,17 +45,17 @@
                 }
                 else
                 {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
                 }
             </dd>
-        *@
-        @*<dt>Two-Factor Authentication:</dt>
+        
+        <dt>Two-Factor Authentication:</dt>
         <dd>
             <p>
                 There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
                 for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>*@
-            @*@if (Model.TwoFactor)
+            </p>
+            @if (Model.TwoFactor)
                 {
                     using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
@@ -74,10 +74,10 @@
                         <input type="submit" value="Enable" class="btn btn-link" />
                         </text>
                     }
-                }*@
+                }
 
 
-    </dl>
+    </dl>*@
 
     <div class="list-group pt-5 pb-5 mb-5" id="manageInfoDiv" style="font-size: 1.5em; font-weight:500">
         <a href="/Manage/ChangePassword" class="list-group-item list-group-item-action" >Change password</a>

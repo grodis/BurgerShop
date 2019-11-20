@@ -48,8 +48,8 @@
                     <tr>
                         <th>Burger</th>
                         <th>Price</th>
-                        <th>Quantity</th>
                         <th>Ingredients</th>
+                        <th>Quantity</th>
                         <th>Sub Total</th>
                         <th></th>
                     </tr>
@@ -60,8 +60,6 @@
                         <tr>
                             <td>@cartBurger.Name</td>
                             <td>€@cartBurger.Price</td>
-                            <td>@cartBurger.Quantity</td>
-
                             <td>
                                 <span>@cartBurger.BreadName,</span>
                                 <span>@cartBurger.MeatName</span>
@@ -79,6 +77,17 @@
                                     <span>,@cartBurger.VeggieName</span>
                                 }
                             </td>
+                            <td>
+                                @using (Html.BeginForm("AddToCartBurgerFromCart", "Cart", FormMethod.Post))
+                                {
+                                    <div class="row  d-flex justify-content-center">
+                                        @Html.Hidden("BurgerId", cartBurger.BurgerId)
+                                        <input class="BurgerQuantityInput btn btn-sm" style="text-align:center;" type="number" name="Quantity" value="@cartBurger.Quantity" min="1" max="20" />
+                                        <button type="submit" class=" btn btn-sm btn-outline-warning">Save</button>
+                                    </div>
+                                }
+                            </td>
+
                             <td>€@(cartBurger.Price * cartBurger.Quantity)</td>
                             <td class="text-right">
                                 @using (Html.BeginForm("DeleteBurger", "Cart", FormMethod.Post))
@@ -94,16 +103,6 @@
 
             </table>
         }
-
-
-
-
-
-
-
-
-
-
 
 
         if (Model.CartDrinks.Any())
@@ -127,7 +126,16 @@
                         <tr>
                             <td>@cartDrink.Name</td>
                             <td>€@cartDrink.Price</td>
-                            <td>@cartDrink.Quantity</td>
+                            <td class="text-center">
+                                @using (Html.BeginForm("AddToCartDrinkFromCart", "Cart", FormMethod.Post))
+                                {
+                                <div class="row d-flex justify-content-center">
+                                    @Html.Hidden("DrinkId", cartDrink.DrinkId)
+                                    <input class="DrinkQuantityInput btn btn-sm"  type="number" name="Quantity" value="@cartDrink.Quantity" min="1" max="20" />
+                                    <button type="submit" class=" btn btn-sm btn-outline-warning" >Save</button>
+                                </div>
+                                }
+                            </td>
 
                             <td>€@(cartDrink.Price * cartDrink.Quantity)</td>
                             <td class="text-right">
@@ -159,14 +167,6 @@
                 </a>
             </div>
         </div>
-
-
-
-
-
     }
 
 </div>
-
-
-

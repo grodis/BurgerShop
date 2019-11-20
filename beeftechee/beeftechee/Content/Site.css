@@ -31,11 +31,11 @@ textarea {
     }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1920px) {
+/*@media only screen and (min-width: 992px) and (max-width: 1920px) {
     #imageDiv {
         padding-left: 100px;
     }
-}
+}*/
 
 @media only screen and (min-width: 992px) and (max-width: 1920px) {
     #navbarSupportedContent a#usernameLink.nav-link {
@@ -134,8 +134,8 @@ if it's not present, don't show loader */
     background-color: #FF6426;
     color: white;
     position: relative;
-    left: -2px;
-    top: -15px;
+    left: -11px;
+    top: -18px;
 }
 
 .fas.fa-shopping-cart.fa-lg {
@@ -145,4 +145,8 @@ if it's not present, don't show loader */
 .fas.fa-shopping-cart.fa-lg:hover {
     color: #FF6426
 }
+
+
+
+
 

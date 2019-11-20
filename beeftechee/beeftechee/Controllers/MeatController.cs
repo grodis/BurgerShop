@@ -1,9 +1,7 @@
-﻿using System.Data.Entity;
+﻿using beeftechee.Entities.Ingredient_Entities;
+using beeftechee.Services;
 using System.Threading.Tasks;
-using System.Net;
 using System.Web.Mvc;
-using beeftechee.Database;
-using beeftechee.Entities.Ingredient_Entities;
 
 namespace beeftechee.Controllers
 {
@@ -11,12 +9,12 @@ namespace beeftechee.Controllers
 
     public class MeatController : Controller
     {
-        private BeeftecheeDb db = new BeeftecheeDb();
+        private IngredientServices IngredientServices = new Services.IngredientServices();
 
         // GET: Meat
         public async Task<ActionResult> Index()
         {
-            return View(await db.Meats.ToListAsync());
+            return View(await IngredientServices.GetAllAsync<Meat>());
         }
 
        
@@ -36,8 +34,7 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Meats.Add(meat);
-                await db.SaveChangesAsync();
+                await IngredientServices.AddAsync(meat);
                 return RedirectToAction("Index");
             }
 
@@ -51,7 +48,7 @@ namespace beeftechee.Controllers
             {
                 return View("Error");
             }
-            Meat meat = await db.Meats.FindAsync(id);
+            Meat meat = await IngredientServices.GetAsync<Meat>(id);
             if (meat == null)
             {
                 return View("Error");
@@ -68,8 +65,7 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(meat).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await IngredientServices.UpdateAsync(meat);
                 return RedirectToAction("Index");
             }
             return View(meat);
@@ -82,7 +78,7 @@ namespace beeftechee.Controllers
             {
                 return View("Error");
             }
-            Meat meat = await db.Meats.FindAsync(id);
+            Meat meat = await IngredientServices.GetAsync<Meat>(id);
             if (meat == null)
             {
                 return View("Error");
@@ -95,19 +91,9 @@ namespace beeftechee.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Meat meat = await db.Meats.FindAsync(id);
-            db.Meats.Remove(meat);
-            await db.SaveChangesAsync();
+            Meat meat = await IngredientServices.GetAsync<Meat>(id);
+            await IngredientServices.DeleteAsync(meat);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.BreadId, "Bread", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("BreadId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("BreadId", null, htmlAttributes: new { @class = "form-control mySelectBread" })
                 @Html.ValidationMessageFor(model => model.BreadId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MeatId, "Meat", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MeatId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("MeatId", null, htmlAttributes: new { @class = "form-control mySelectMeat" })
                 @Html.ValidationMessageFor(model => model.MeatId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CheeseId, "Cheese", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CheeseId", null,"None",htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CheeseId", null, "None", htmlAttributes: new { @class = "form-control mySelectCheese" })
                 @Html.ValidationMessageFor(model => model.CheeseId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SauceId, "Sauce", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("SauceId", null, "None", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("SauceId", null, "None", htmlAttributes: new { @class = "form-control mySelectSauce" })
                 @Html.ValidationMessageFor(model => model.SauceId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,14 +50,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.VeggieId, "Veggetable", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("VeggieId", null,"None", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("VeggieId", null, "None", htmlAttributes: new { @class = "form-control mySelectVeggie" })
                 @Html.ValidationMessageFor(model => model.VeggieId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                <p class="mb-5">Total price: <span id="totalPriceCustomBurger">2€</span></p>
                 <input type="submit" value="Add to Cart" class="genric-btn primary circle arrow" />
+
             </div>
         </div>
     </div>

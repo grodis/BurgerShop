@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace beeftechee.Models.CartModels
+﻿namespace beeftechee.Models.CartModels
 {
     //VIEWMODEL
     public class CartBurger
@@ -18,13 +13,6 @@ namespace beeftechee.Models.CartModels
         public string CheeseName { get; set; }
         public string SauceName { get; set; }
         public string VeggieName { get; set; }
-
-
-
-
-
-
-
 
 
     }

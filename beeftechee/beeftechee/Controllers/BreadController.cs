@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using beeftechee.Entities.Ingredient_Entities;
+using beeftechee.Services;
 using System.Threading.Tasks;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using beeftechee.Database;
-using beeftechee.Entities.Ingredient_Entities;
 
 namespace beeftechee.Controllers
 {
     [Authorize(Roles ="Admin")]
     public class BreadController : Controller
     {
-        private BeeftecheeDb db = new BeeftecheeDb();
+        private IngredientServices IngredientServices = new Services.IngredientServices();
 
         // GET: Bread
         public async Task<ActionResult> Index()
         {
-            return View(await db.Breads.ToListAsync());
+            return View(await IngredientServices.GetAllAsync<Bread>());
         }
 
         
@@ -39,8 +32,7 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Breads.Add(bread);
-                await db.SaveChangesAsync();
+                await IngredientServices.AddAsync(bread);
                 return RedirectToAction("Index");
             }
 
@@ -54,7 +46,7 @@ namespace beeftechee.Controllers
             {
                 return View("Error");
             }
-            Bread bread = await db.Breads.FindAsync(id);
+            Bread bread = await IngredientServices.GetAsync<Bread>(id);
             if (bread == null)
             {
                 return View("Error");
@@ -71,8 +63,7 @@ namespace beeftechee.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bread).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await IngredientServices.UpdateAsync(bread);
                 return RedirectToAction("Index");
             }
             return View(bread);
@@ -85,7 +76,7 @@ namespace beeftechee.Controllers
             {
                 return View("Error");
             }
-            Bread bread = await db.Breads.FindAsync(id);
+            Bread bread = await IngredientServices.GetAsync<Bread>(id);
             if (bread == null)
             {
                 return View("Error");
@@ -98,19 +89,9 @@ namespace beeftechee.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Bread bread = await db.Breads.FindAsync(id);
-            db.Breads.Remove(bread);
-            await db.SaveChangesAsync();
+            Bread bread = await IngredientServices.GetAsync<Bread>(id);
+            await IngredientServices.DeleteAsync(bread);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

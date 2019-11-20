@@ -1,10 +1,8 @@
 ﻿using beeftechee.Database;
 using beeftechee.Entities;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace beeftechee.Services
@@ -33,6 +31,34 @@ namespace beeftechee.Services
 
         }
 
+        public static async Task AddDrinkAsync(Drink drink)
+        {
+            using (BeeftecheeDb context = new BeeftecheeDb())
+            {
+                context.Drinks.Add(drink);
+                await context.SaveChangesAsync();
+
+            }
+        }
+
+
+        public static void UpdateDrink(Drink drink)
+        {
+            using (BeeftecheeDb context = new BeeftecheeDb())
+            {
+                context.Entry(drink).State = EntityState.Modified;
+
+            }
+        }
+
+        public static async Task SaveChanges()
+        {
+            using (BeeftecheeDb context = new BeeftecheeDb())
+            {
+                await context.SaveChangesAsync();
+
+            }
+        }
 
     }
 }

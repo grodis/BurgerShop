@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using beeftechee.Database;
+﻿using beeftechee.Database;
 using beeftechee.Entities;
 using beeftechee.Services;
+using System.Data.Entity;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace beeftechee.Controllers
 {
@@ -54,11 +49,8 @@ namespace beeftechee.Controllers
                 burger.Cheese = db.Cheeses.Find(burger.CheeseId);
 
                 //Calculate the Total Price of the burger
-                decimal totalPrice = burger.Bread.Price + burger.Meat.Price;
-                totalPrice += db.Sauces.Find(burger.SauceId) == null ? 0 : db.Sauces.Find(burger.SauceId).Price;
-                totalPrice += db.Cheeses.Find(burger.CheeseId) == null ? 0 : db.Cheeses.Find(burger.CheeseId).Price;
-                totalPrice += db.Veggies.Find(burger.VeggieId) == null ? 0 : db.Veggies.Find(burger.VeggieId).Price;
-                burger.Price = totalPrice;
+
+                burger.Price = GetTotalPrice(burger);
 
 
                 //Get the photo
@@ -129,11 +121,8 @@ namespace beeftechee.Controllers
                 burger.Cheese = db.Cheeses.Find(burger.CheeseId);
 
                 //Calculate the Total Price of the burger
-                decimal totalPrice = burger.Bread.Price + burger.Meat.Price;
-                totalPrice += db.Sauces.Find(burger.SauceId) == null ? 0 : db.Sauces.Find(burger.SauceId).Price;
-                totalPrice += db.Cheeses.Find(burger.CheeseId) == null ? 0 : db.Cheeses.Find(burger.CheeseId).Price;
-                totalPrice += db.Veggies.Find(burger.VeggieId) == null ? 0 : db.Veggies.Find(burger.VeggieId).Price;
-                burger.Price = totalPrice;
+                
+                burger.Price = GetTotalPrice(burger);
 
                 db.Entry(burger).State = EntityState.Modified;
 
@@ -178,6 +167,15 @@ namespace beeftechee.Controllers
             db.Burgers.Remove(burger);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+        [NonAction]
+        protected decimal GetTotalPrice(Burger burger)
+        {
+            decimal totalPrice = burger.Bread.Price + burger.Meat.Price;
+            totalPrice += db.Sauces.Find(burger.SauceId) == null ? 0 : db.Sauces.Find(burger.SauceId).Price;
+            totalPrice += db.Cheeses.Find(burger.CheeseId) == null ? 0 : db.Cheeses.Find(burger.CheeseId).Price;
+            totalPrice += db.Veggies.Find(burger.VeggieId) == null ? 0 : db.Veggies.Find(burger.VeggieId).Price;
+            return totalPrice;
         }
 
         protected override void Dispose(bool disposing)

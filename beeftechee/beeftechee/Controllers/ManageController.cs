@@ -1,13 +1,12 @@
-﻿using System;
+﻿using beeftechee.Models;
+using beeftechee.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using beeftechee.Models;
-using beeftechee.ViewModels;
 
 namespace beeftechee.Controllers
 {
@@ -65,6 +64,7 @@ namespace beeftechee.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),

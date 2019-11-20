@@ -16,7 +16,7 @@
 
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "form-inline" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "d-inline-flex justify-content-center" }))
     {
         @Html.AntiForgeryToken()
 
@@ -39,7 +39,7 @@
             "Index", "Manage", routeValues: null, htmlAttributes: new { id = "usernameLink", title = "Manage", @class = "nav-link", @style = "color: inherit; font-weight: 900;" })
         </div>
 
-        <div class="menu_btn"><a class="btn_1" id="logoffLink" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></div>
+        <div class="menu_btn"><a class="btn_1" id="logoffLink" href="javascript:document.getElementById('logoutForm').submit()">Logout</a></div>
 
     }
 }

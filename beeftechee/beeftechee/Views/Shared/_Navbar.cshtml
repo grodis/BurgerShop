@@ -25,15 +25,9 @@
                             @if (User.IsInRole("User") || User.IsInRole("Supervisor") || User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
-
                                     <a class="nav-link" href="@Url.Action("Index", "Cart")">
-                                        <i id="myCartIcon" class="fas fa-shopping-cart fa-lg" style="font-size: 24px;"></i><span><span id="cartSpan" class="badge">@Session["count"]</span></span>
-                                        @*@if (Convert.ToInt32(Session["count"]) > 0)
-                    {
-                        <span>(<span class="badge">@Session["count"]</span>)</span>
-                    }*@
-
-
+                                        <i id="myCartIcon" class="fas fa-shopping-cart fa-lg" style="font-size: 24px;"></i>
+                                        <span><span id="cartSpan" class="badge">@Session["count"]</span></span> 
                                     </a>
                                 </li>
                             }

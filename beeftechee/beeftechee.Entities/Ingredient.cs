@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace beeftechee.Entities.Ingredient_Entities
 {
@@ -11,5 +7,12 @@ namespace beeftechee.Entities.Ingredient_Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+
+        [NotMapped]
+        public string NamePrice
+        {
+            get { return $"{Name} {Price}€"; }
+        }
+        
     }
 }

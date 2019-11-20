@@ -52,13 +52,13 @@
                 @if (String.IsNullOrWhiteSpace(Model.ImageUrl))
                 {
                     <div class="form-group pl-3">
-                        <img src="~/Content/noImage.jpg" alt="No Burger Image" />
+                        <img src="~/Content/noImage.jpg" alt="No Burger Image" style="width:150px"/>
                     </div>
                 }
                 else
                 {
                     <div class="form-group pl-3">
-                        <img src="~/Content/UserImages/@Model.ImageUrl" alt="No Burger Image" />
+                        <img src="~/Content/UserImages/@Model.ImageUrl" alt="No Burger Image" style="width:200px"/>
                     </div>
                 }
 
